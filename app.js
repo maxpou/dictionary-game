@@ -34,13 +34,18 @@ Vue.component('word-current', {
 })
 
 Vue.component('word-proposition', {
-  props: ['proposition', 'correctword'],
   template: `
-    <li v-bind:class="[isCorrect ? 'correct' : 'incorrect']"
+    <li v-bind:class="[isCorrect ? 'correct' : 'incorrect', {active: isclicked} ]"
         v-on:click='submitanswer'
     >
       {{ proposition.translation }}
     </li>`,
+  props: ['proposition', 'correctword'],
+  data: function() {
+    return {
+      isclicked: false
+    }
+  },
   computed: {
     isCorrect: function () {
       return this.proposition === this.correctword;
@@ -48,7 +53,13 @@ Vue.component('word-proposition', {
   },
   methods: {
     submitanswer: function () {
-      this.$emit('submitanswer')
+      this.isclicked = true;
+      this.$emit('submitanswer');
+    }
+  },
+  watch: {
+    correctword: function () {
+      this.isclicked = false;
     }
   }
 })
@@ -62,15 +73,16 @@ new Vue({
   },
   component: {
   },
-  watch: {
-  },
   methods: {
     pickNewWords: function () {
       this.propositions = this.shuffle(this.words).slice(0, 4);
       this.currentWord = this.propositions[Math.floor(Math.random() * 4)]
     },
     verify: function (userproposition) {
-      console.log(userproposition===this.currentWord);
+      // console.log(userproposition===this.currentWord);
+      if(userproposition===this.currentWord) {
+        this.pickNewWords()
+      }
     },
     shuffle: function (array) {
       var currentIndex = array.length,
@@ -91,5 +103,8 @@ new Vue({
 
       return array;
     }
+  },
+  created: function () {
+    this.pickNewWords()
   }
 })

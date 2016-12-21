@@ -1,0 +1,7 @@
+li.incorrect.active {
+  background-color: red;
+}
+
+li.correct.active {
+  background-color: green;
+}
