@@ -104,7 +104,7 @@ new Vue({
     }
   },
   created: function () {
-    this.$http.get('/words.json').then((response) => {
+    this.$http.get('words.json').then((response) => {
       response.json().then((data) => {
         this.words = data
       }).then(() => {
