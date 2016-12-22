@@ -30,16 +30,17 @@ let words = [{
 
 Vue.component('word-current', {
   props: ['currentword'],
-  template: '<h1 v-if="currentword">{{currentword.content}}</h1>'
+  template: '<h1 v-if="currentword" class="ui center aligned header">{{currentword.content}}</h1>'
 })
 
 Vue.component('word-proposition', {
   template: `
-    <li v-bind:class="[isCorrect ? 'correct' : 'incorrect', {active: isclicked} ]"
-        v-on:click='submitanswer'
-    >
-      {{ proposition.translation }}
-    </li>`,
+    <div class="column">
+      <div class="ui segment" v-bind:class="[isCorrect ? 'correct' : 'incorrect', {active: isclicked} ]"
+          v-on:click='submitanswer'>
+        {{ proposition.translation }}
+      </div>
+    </div>`,
   props: ['proposition', 'correctword'],
   data: function() {
     return {
@@ -79,9 +80,10 @@ new Vue({
       this.currentWord = this.propositions[Math.floor(Math.random() * 4)]
     },
     verify: function (userproposition) {
-      // console.log(userproposition===this.currentWord);
-      if(userproposition===this.currentWord) {
-        this.pickNewWords()
+      if(userproposition === this.currentWord) {
+        setTimeout(() => {
+            this.pickNewWords()
+        }, 500);
       }
     },
     shuffle: function (array) {

@@ -1,7 +1,11 @@
-li.incorrect.active {
+h1.ui.center.header {
+  padding: 2em 0em;
+}
+
+div.incorrect.active {
   background-color: red;
 }
 
-li.correct.active {
+div.correct.active {
   background-color: green;
 }

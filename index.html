@@ -5,7 +5,7 @@
   <title></title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/components/accordion.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
 </head>
@@ -13,13 +13,15 @@
 <body>
 
   <div id="app">
-    <button v-on:click="pickNewWords">Start</button>
     <word-current v-bind:currentword="currentWord"></word-current>
-    <word-proposition v-for="proposition in propositions"
-      v-bind:proposition="proposition"
-      v-bind:correctword="currentWord"
-      v-on:submitanswer="verify(proposition)"
-    ></word-proposition>
+
+    <div class="ui two column stackable grid">
+      <word-proposition v-for="proposition in propositions"
+        v-bind:proposition="proposition"
+        v-bind:correctword="currentWord"
+        v-on:submitanswer="verify(proposition)"
+      ></word-proposition>
+    </div>
   </div>
 
   <script src="app.js"></script>
