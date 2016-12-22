@@ -30,21 +30,39 @@ let words = [{
 
 Vue.component('word-current', {
   props: ['currentword'],
-  template: '<h1 v-if="currentword" class="ui center aligned header">{{currentword.content}}</h1>'
+  template: `
+    <h1 v-if="currentword" class="ui center aligned header">{{currentword.content}}</h1>
+  `
+})
+
+Vue.component('score', {
+  template: `
+    <div v-if="totalScore" class="ui indicating progress">
+      <div class="bar" v-bind:style="{ width: totalScore + '%' }">
+        <div class="progress">{{totalScore}}%</div>
+      </div>
+    </div>`,
+  props: ['score'],
+  computed: {
+    totalScore: function () {
+      return Math.floor(100 * this.score.success / (this.score.success + this.score.errors));
+    }
+  },
 })
 
 Vue.component('word-proposition', {
   template: `
     <div class="column">
-      <div class="ui segment" v-bind:class="[isCorrect ? 'correct' : 'incorrect', {active: isclicked} ]"
-          v-on:click='submitanswer'>
+      <div class="ui segment"
+          v-bind:class="[isCorrect ? 'correct' : 'incorrect', { active: isClicked } ]"
+          v-on:click='submitAnswer'>
         {{ proposition.translation }}
       </div>
     </div>`,
   props: ['proposition', 'correctword'],
   data: function() {
     return {
-      isclicked: false
+      isClicked: false
     }
   },
   computed: {
@@ -53,14 +71,14 @@ Vue.component('word-proposition', {
     }
   },
   methods: {
-    submitanswer: function () {
-      this.isclicked = true;
+    submitAnswer: function () {
+      this.isClicked = true;
       this.$emit('submitanswer');
     }
   },
   watch: {
-    correctword: function () {
-      this.isclicked = false;
+    currentWord: function () {
+      this.isClicked = false;
     }
   }
 })
@@ -69,8 +87,12 @@ new Vue({
   el: '#app',
   data: {
     words: words,
+    propositions: [],
     currentWord: {},
-    propositions: []
+    game: {
+      success: 0,
+      errors: 0
+    }
   },
   component: {
   },
@@ -81,9 +103,14 @@ new Vue({
     },
     verify: function (userproposition) {
       if(userproposition === this.currentWord) {
+        this.propositions = []
+        this.currentWord = {}
         setTimeout(() => {
+            this.game.success++
             this.pickNewWords()
-        }, 500);
+        }, 150);
+      } else {
+        this.game.errors++
       }
     },
     shuffle: function (array) {

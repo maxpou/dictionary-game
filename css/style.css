@@ -9,3 +9,7 @@ div.incorrect.active {
 div.correct.active {
   background-color: green;
 }
+
+.ui.progress .bar {
+  background-color: green;
+}

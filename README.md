@@ -8,7 +8,6 @@ It use VueJs 2 and SemanticUI.
 
 - [ ] load JSON via HTTP (ajax call)
 - [ ] improve CSS (not too much!)
-- [ ] add a score components
 
 
 ## sharing data between parent-child(s)
