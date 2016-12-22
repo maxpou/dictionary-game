@@ -1,15 +1,9 @@
-# dictionnary game
+# dictionary game
 
-Just a small web app to improve my english.
-It use VueJs 2 and SemanticUI.
+Just a small web app to improve my english vocabulary.
 
+It uses: 
 
-## Todo
-
-- [ ] load JSON via HTTP (ajax call)
-- [ ] improve CSS (not too much!)
-
-
-## sharing data between parent-child(s)
-
-See https://vuejs.org/v2/guide/components.html#Using-v-on-with-Custom-Events
+* [VueJs 2](https://vuejs.org/): JS Framework
+  * [vue-resource](https://github.com/pagekit/vue-resource) for XMLHttpRequest
+* [SemanticUI](http://semantic-ui.com/) CSS Framework.

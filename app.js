@@ -1,33 +1,3 @@
-let words = [{
-  "content": "a",
-  "translation": "aa translation"
-}, {
-  "content": "b",
-  "translation": "bb translation"
-}, {
-  "content": "c",
-  "translation": "cc translation"
-}, {
-  "content": "d",
-  "translation": "dd translation"
-}, {
-  "content": "e",
-  "translation": "ee translation"
-}, {
-  "content": "f",
-  "translation": "ff translation"
-}, {
-  "content": "g",
-  "translation": "gg translation"
-}, {
-  "content": "h",
-  "translation": "hh translation"
-}, {
-  "content": "i",
-  "translation": "ii translation"
-}];
-
-
 Vue.component('word-current', {
   props: ['currentword'],
   template: `
@@ -86,7 +56,7 @@ Vue.component('word-proposition', {
 new Vue({
   el: '#app',
   data: {
-    words: words,
+    words: [],
     propositions: [],
     currentWord: {},
     game: {
@@ -134,6 +104,12 @@ new Vue({
     }
   },
   created: function () {
-    this.pickNewWords()
+    this.$http.get('/words.json').then((response) => {
+      response.json().then((data) => {
+        this.words = data
+      }).then(() => {
+        this.pickNewWords()
+      })
+    })
   }
 })
