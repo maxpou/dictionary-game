@@ -1,7 +1,7 @@
 Vue.component('word-current', {
   props: ['currentword'],
   template: `
-    <h1 v-if="currentword" class="ui center aligned header">{{currentword.content}}</h1>
+    <h1 v-if="currentword" class="ui center aligned header">{{ currentword.content }}</h1>
   `
 })
 
@@ -9,12 +9,12 @@ Vue.component('score', {
   template: `
     <div v-if="totalScore" class="ui indicating progress">
       <div class="bar" v-bind:style="{ width: totalScore + '%' }">
-        <div class="progress">{{totalScore}}% ({{ score.success }} / {{this.score.success + this.score.errors }})</div>
+        <div class="progress">{{ totalScore }}% ({{ score.success }} / {{ this.score.success + this.score.errors }})</div>
       </div>
     </div>`,
   props: ['score'],
   computed: {
-    totalScore: function () {
+    totalScore: function() {
       return Math.floor(100 * this.score.success / (this.score.success + this.score.errors));
     }
   },
@@ -24,7 +24,7 @@ Vue.component('word-proposition', {
   template: `
     <div class="column">
         <div class="ui segment"
-          v-bind:class="[isCorrect ? 'correct' : 'incorrect', { clicked: isClicked } ]"
+          v-bind:class="[ isCorrect ? 'correct' : 'incorrect', { clicked: isClicked } ]"
           v-on:click='submitAnswer'>
           {{ proposition.translation }}
         </div>
@@ -37,12 +37,12 @@ Vue.component('word-proposition', {
     }
   },
   computed: {
-    isCorrect: function () {
+    isCorrect: function() {
       return this.proposition === this.correctword;
     }
   },
   methods: {
-    submitAnswer: function () {
+    submitAnswer: function() {
       if (!this.isClicked) {
         this.isClicked = true
         this.$emit('submitanswer')
@@ -50,8 +50,7 @@ Vue.component('word-proposition', {
     }
   },
   watch: {
-    currentWord: function () {
-      console.log("watch");
+    currentWord: function() {
       this.isClicked = false
     }
   }
@@ -63,7 +62,8 @@ new Vue({
     words: [],
     propositions: [],
     currentWord: {},
-    game: {
+    mode: null,
+    stats: {
       success: 0,
       errors: 0
     }
@@ -71,22 +71,22 @@ new Vue({
   component: {
   },
   methods: {
-    pickNewWords: function () {
-        this.propositions = this.shuffle(this.words).slice(0, 4);
+    pickNewWords: function() {
+        this.propositions = this.shuffleArray(this.words).slice(0, 4);
         this.currentWord = this.propositions[Math.floor(Math.random() * 4)]
     },
-    verify: async function (userproposition) {
+    verify: async function(userproposition) {
       if(userproposition === this.currentWord) {
         await this.sleep(500)
         await this.reinitialize()
         await this.success()
       } else {
-        this.game.errors++
+        this.stats.errors++
       }
     },
-    success: function () {
+    success: function() {
       return new Promise(resolve => {
-        this.game.success++
+        this.stats.success++
         this.pickNewWords()
         resolve()
       });
@@ -101,7 +101,7 @@ new Vue({
     sleep: function(ms) {
       return new Promise(r => setTimeout(r, ms))
     },
-    shuffle: function (array) {
+    shuffleArray: function(array) {
       var currentIndex = array.length,
         temporaryValue, randomIndex;
 
@@ -121,7 +121,7 @@ new Vue({
       return array;
     }
   },
-  created: function () {
+  created: function() {
     this.$http.get('words.json').then((response) => {
       response.json().then((data) => {
         this.words = data

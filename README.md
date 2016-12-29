@@ -1,4 +1,4 @@
-# dictionary game
+# Dictionary Game 🇫🇷 / 🇬🇧
 
 Just a small web app to improve my english vocabulary.
 
