@@ -69,7 +69,7 @@
   "translation": "maladie"
 }, {
   "content": "boundary",
-  "translation": "frontière / limites"
+  "translation": "frontière / limite"
 }, {
   "content": "upset",
   "translation": "bouleverser / désapointé"
@@ -88,4 +88,7 @@
 }, {
   "content": "carry out",
   "translation": "effectuer / réaliser"
+}, {
+  "content": "furniture",
+  "translation": "meubles"
 }]

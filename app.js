@@ -1,21 +1,15 @@
 Vue.component('word-current', {
-  props: ['currentword'],
+  props: ['round'],
   template: `
-    <h1 v-if="currentword" class="ui center aligned header">{{ currentword.content }}</h1>
-  `
-})
-
-Vue.component('score', {
-  template: `
-    <div v-if="totalScore" class="ui indicating progress">
-      <div class="bar" v-bind:style="{ width: totalScore + '%' }">
-        <div class="progress">{{ totalScore }}% ({{ score.success }} / {{ this.score.success + this.score.errors }})</div>
-      </div>
-    </div>`,
-  props: ['score'],
+    <h1 v-if="round.currentWord" class="ui center aligned header">{{ wordToGuess }}</h1>
+  `,
   computed: {
-    totalScore: function() {
-      return Math.floor(100 * this.score.success / (this.score.success + this.score.errors));
+    wordToGuess: function() {
+      if (this.round.mode === "guessFromEn") {
+        return this.round.currentWord.content
+      } else {
+        return this.round.currentWord.translation
+      }
     }
   },
 })
@@ -26,11 +20,11 @@ Vue.component('word-proposition', {
         <div class="ui segment"
           v-bind:class="[ isCorrect ? 'correct' : 'incorrect', { clicked: isClicked } ]"
           v-on:click='submitAnswer'>
-          {{ proposition.translation }}
+          {{ printedProposition }}
         </div>
       </a>
     </div>`,
-  props: ['proposition', 'correctword'],
+  props: ['proposition', 'round'],
   data: function() {
     return {
       isClicked: false
@@ -38,7 +32,14 @@ Vue.component('word-proposition', {
   },
   computed: {
     isCorrect: function() {
-      return this.proposition === this.correctword;
+      return this.proposition === this.round.currentWord
+    },
+    printedProposition: function() {
+      if (this.round.mode === "guessFromEn") {
+        return this.proposition.translation
+      } else {
+        return this.proposition.content
+      }
     }
   },
   methods: {
@@ -56,27 +57,43 @@ Vue.component('word-proposition', {
   }
 })
 
+Vue.component('score', {
+  template: `
+    <div v-if="totalScorePercentage" class="ui indicating progress">
+      <div class="bar" v-bind:style="{ width: totalScorePercentage + '%' }">
+        <div class="progress">{{ score.success }} / {{ this.score.success + this.score.errors }} ({{ totalScorePercentage }}% )</div>
+      </div>
+    </div>`,
+  props: ['score'],
+  computed: {
+    totalScorePercentage: function() {
+      return Math.floor(100 * this.score.success / (this.score.success + this.score.errors));
+    }
+  },
+})
+
 new Vue({
   el: '#app',
   data: {
     words: [],
-    propositions: [],
-    currentWord: {},
-    mode: null,
+    round: {
+      mode: null,
+      currentWord: {},
+      propositions: []
+    },
     stats: {
       success: 0,
       errors: 0
     }
   },
-  component: {
-  },
   methods: {
     pickNewWords: function() {
-        this.propositions = this.shuffleArray(this.words).slice(0, 4);
-        this.currentWord = this.propositions[Math.floor(Math.random() * 4)]
+        this.round.mode = this.getRandomMode()
+        this.round.propositions = this.shuffleArray(this.words).slice(0, 4);
+        this.round.currentWord = this.round.propositions[Math.floor(Math.random() * 4)]
     },
     verify: async function(userproposition) {
-      if(userproposition === this.currentWord) {
+      if(userproposition === this.round.currentWord) {
         await this.sleep(500)
         await this.reinitialize()
         await this.success()
@@ -93,8 +110,8 @@ new Vue({
     },
     reinitialize: function() {
       return new Promise(resolve => {
-        this.propositions = []
-        this.currentWord = {}
+        this.round.propositions = []
+        this.round.currentWord = {}
         resolve()
       });
     },
@@ -103,22 +120,25 @@ new Vue({
     },
     shuffleArray: function(array) {
       var currentIndex = array.length,
-        temporaryValue, randomIndex;
+        temporaryValue, randomIndex
 
       // While there remain elements to shuffle...
       while (0 !== currentIndex) {
 
         // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
+        randomIndex = Math.floor(Math.random() * currentIndex)
+        currentIndex -= 1
 
         // And swap it with the current element.
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+        temporaryValue = array[currentIndex]
+        array[currentIndex] = array[randomIndex]
+        array[randomIndex] = temporaryValue
       }
 
-      return array;
+      return array
+    },
+    getRandomMode: function() {
+      return (Math.floor(Math.random() * 2)) === 0 ? "guessFromEn" : "guessFromFr"
     }
   },
   created: function() {

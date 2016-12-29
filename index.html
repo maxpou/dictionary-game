@@ -15,12 +15,12 @@
 
   <div id="app">
     <score v-bind:score="stats"></score>
-    <word-current v-bind:currentword="currentWord"></word-current>
+    <word-current v-bind:round="round"></word-current>
 
     <div class="ui two column stackable grid">
-      <word-proposition v-for="proposition in propositions"
+      <word-proposition v-for="proposition in round.propositions"
         v-bind:proposition="proposition"
-        v-bind:correctword="currentWord"
+        v-bind:round="round"
         v-on:submitanswer="verify(proposition)"
       ></word-proposition>
     </div>
