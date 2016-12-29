@@ -2,11 +2,11 @@ h1.ui.center.header {
   padding: 2em 0em;
 }
 
-div.incorrect.active {
+.ui.segment.clicked.incorrect {
   background-color: red;
 }
 
-div.correct.active {
+.ui.segment.clicked.correct {
   background-color: green;
 }
 

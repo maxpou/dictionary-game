@@ -9,7 +9,7 @@ Vue.component('score', {
   template: `
     <div v-if="totalScore" class="ui indicating progress">
       <div class="bar" v-bind:style="{ width: totalScore + '%' }">
-        <div class="progress">{{totalScore}}%</div>
+        <div class="progress">{{totalScore}}% ({{ score.success }} / {{this.score.success + this.score.errors }})</div>
       </div>
     </div>`,
   props: ['score'],
@@ -23,11 +23,12 @@ Vue.component('score', {
 Vue.component('word-proposition', {
   template: `
     <div class="column">
-      <div class="ui segment"
-          v-bind:class="[isCorrect ? 'correct' : 'incorrect', { active: isClicked } ]"
+        <div class="ui segment"
+          v-bind:class="[isCorrect ? 'correct' : 'incorrect', { clicked: isClicked } ]"
           v-on:click='submitAnswer'>
-        {{ proposition.translation }}
-      </div>
+          {{ proposition.translation }}
+        </div>
+      </a>
     </div>`,
   props: ['proposition', 'correctword'],
   data: function() {
@@ -42,13 +43,16 @@ Vue.component('word-proposition', {
   },
   methods: {
     submitAnswer: function () {
-      this.isClicked = true;
-      this.$emit('submitanswer');
+      if (!this.isClicked) {
+        this.isClicked = true
+        this.$emit('submitanswer')
+      }
     }
   },
   watch: {
     currentWord: function () {
-      this.isClicked = false;
+      console.log("watch");
+      this.isClicked = false
     }
   }
 })
@@ -68,20 +72,34 @@ new Vue({
   },
   methods: {
     pickNewWords: function () {
-      this.propositions = this.shuffle(this.words).slice(0, 4);
-      this.currentWord = this.propositions[Math.floor(Math.random() * 4)]
+        this.propositions = this.shuffle(this.words).slice(0, 4);
+        this.currentWord = this.propositions[Math.floor(Math.random() * 4)]
     },
-    verify: function (userproposition) {
+    verify: async function (userproposition) {
       if(userproposition === this.currentWord) {
-        this.propositions = []
-        this.currentWord = {}
-        setTimeout(() => {
-            this.game.success++
-            this.pickNewWords()
-        }, 150);
+        await this.sleep(500)
+        await this.reinitialize()
+        await this.success()
       } else {
         this.game.errors++
       }
+    },
+    success: function () {
+      return new Promise(resolve => {
+        this.game.success++
+        this.pickNewWords()
+        resolve()
+      });
+    },
+    reinitialize: function() {
+      return new Promise(resolve => {
+        this.propositions = []
+        this.currentWord = {}
+        resolve()
+      });
+    },
+    sleep: function(ms) {
+      return new Promise(r => setTimeout(r, ms))
     },
     shuffle: function (array) {
       var currentIndex = array.length,
