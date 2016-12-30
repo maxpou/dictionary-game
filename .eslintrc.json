@@ -9,7 +9,8 @@
         "promise"
     ],
     "globals": {
-        "Vue": true
+        "Vue": true,
+        "QueryString": true
     },
     "rules": {
       "no-new": 0,

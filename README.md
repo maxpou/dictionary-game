@@ -5,8 +5,9 @@ Just a small web app to improve my english vocabulary.
 It uses: 
 
 * [VueJs 2](https://vuejs.org/): an awesome JS Framework ❤️
-  * [vue-resource](https://github.com/pagekit/vue-resource) for XMLHttpRequest
-* [SemanticUI](http://semantic-ui.com/) CSS Framework.
+  * [vue-resource](https://github.com/pagekit/vue-resource): Vuejs extension for XMLHttpRequest
+* [Firebase](https://console.firebase.google.com/): kinda database with REST endpoint
+* [SemanticUI](http://semantic-ui.com/): CSS Framework.
 
 And also ES6/7 features:
 
@@ -14,6 +15,18 @@ And also ES6/7 features:
 * [Async/await functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 * [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
+## Bypass Firebase
+
+If you don't want Firebase, you can use a JSON file instead. See `words.json` and adapt the first line of `app.js`:
+
+```js
+var dataUrl = 'words.json'
+```
+
+## Admin & Firebase
+
+Why I don't use array: https://firebase.googleblog.com/2014/04/best-practices-arrays-in-firebase.html
+Get a firebase token, see the official doc: https://firebase.google.com/docs/reference/rest/database/user-auth
 
 ## Dev tools
 
@@ -27,5 +40,7 @@ npm install
 
 Available command:
 
-  * `npm run start`: start a mini HTTP server, then go to: [127.0.0.1:8080](http://127.0.0.1:8080)
-  * `npm run lint`: lint app.js
+* `npm start`: start a mini HTTP server, then go to: 
+  * [127.0.0.1:8080](http://127.0.0.1:8080)
+  * [127.0.0.1:8080/admin/?auth=<auhToken>](http://127.0.0.1:8080/admin/?auth=<auhToken>)
+* `npm run lint`: lint app.js and admin.js

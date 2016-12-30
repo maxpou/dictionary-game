@@ -1,3 +1,6 @@
+// 'words.json'
+var dataUrl = 'https://translate-2f28d.firebaseio.com/.json'
+
 Vue.component('word-current', {
   props: ['round'],
   template: `
@@ -142,7 +145,7 @@ new Vue({
     }
   },
   created: function () {
-    this.$http.get('words.json').then((response) => {
+    this.$http.get(dataUrl).then((response) => {
       response.json().then((data) => {
         this.words = data
       }).then(() => {
