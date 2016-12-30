@@ -147,7 +147,7 @@ new Vue({
   created: function () {
     this.$http.get(dataUrl).then((response) => {
       response.json().then((data) => {
-        this.words = data
+        this.words = Object.values(data)
       }).then(() => {
         this.pickNewWords()
       })
