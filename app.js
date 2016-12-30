@@ -4,14 +4,14 @@ Vue.component('word-current', {
     <h1 v-if="round.currentWord" class="ui center aligned header">{{ wordToGuess }}</h1>
   `,
   computed: {
-    wordToGuess: function() {
-      if (this.round.mode === "guessFromEn") {
+    wordToGuess: function () {
+      if (this.round.mode === 'guessFromEn') {
         return this.round.currentWord.content
       } else {
         return this.round.currentWord.translation
       }
     }
-  },
+  }
 })
 
 Vue.component('word-proposition', {
@@ -25,17 +25,17 @@ Vue.component('word-proposition', {
       </a>
     </div>`,
   props: ['proposition', 'round'],
-  data: function() {
+  data: function () {
     return {
       isClicked: false
     }
   },
   computed: {
-    isCorrect: function() {
+    isCorrect: function () {
       return this.proposition === this.round.currentWord
     },
-    printedProposition: function() {
-      if (this.round.mode === "guessFromEn") {
+    printedProposition: function () {
+      if (this.round.mode === 'guessFromEn') {
         return this.proposition.translation
       } else {
         return this.proposition.content
@@ -43,7 +43,7 @@ Vue.component('word-proposition', {
     }
   },
   methods: {
-    submitAnswer: function() {
+    submitAnswer: function () {
       if (!this.isClicked) {
         this.isClicked = true
         this.$emit('submitanswer')
@@ -51,7 +51,7 @@ Vue.component('word-proposition', {
     }
   },
   watch: {
-    currentWord: function() {
+    currentWord: function () {
       this.isClicked = false
     }
   }
@@ -66,10 +66,10 @@ Vue.component('score', {
     </div>`,
   props: ['score'],
   computed: {
-    totalScorePercentage: function() {
-      return Math.floor(100 * this.score.success / (this.score.success + this.score.errors));
+    totalScorePercentage: function () {
+      return Math.floor(100 * this.score.success / (this.score.success + this.score.errors))
     }
-  },
+  }
 })
 
 new Vue({
@@ -87,13 +87,13 @@ new Vue({
     }
   },
   methods: {
-    pickNewWords: function() {
-        this.round.mode = this.getRandomMode()
-        this.round.propositions = this.shuffleArray(this.words).slice(0, 4);
-        this.round.currentWord = this.round.propositions[Math.floor(Math.random() * 4)]
+    pickNewWords: function () {
+      this.round.mode = this.getRandomMode()
+      this.round.propositions = this.shuffleArray(this.words).slice(0, 4)
+      this.round.currentWord = this.round.propositions[Math.floor(Math.random() * 4)]
     },
-    verify: async function(userproposition) {
-      if(userproposition === this.round.currentWord) {
+    verify: async function (userproposition) {
+      if (userproposition === this.round.currentWord) {
         await this.sleep(500)
         await this.reinitialize()
         await this.success()
@@ -101,30 +101,30 @@ new Vue({
         this.stats.errors++
       }
     },
-    success: function() {
+    success: function () {
       return new Promise(resolve => {
         this.stats.success++
         this.pickNewWords()
         resolve()
-      });
+      })
     },
-    reinitialize: function() {
+    reinitialize: function () {
       return new Promise(resolve => {
         this.round.propositions = []
         this.round.currentWord = {}
         resolve()
-      });
+      })
     },
-    sleep: function(ms) {
+    sleep: function (ms) {
       return new Promise(r => setTimeout(r, ms))
     },
-    shuffleArray: function(array) {
-      var currentIndex = array.length,
-        temporaryValue, randomIndex
+    shuffleArray: function (array) {
+      var currentIndex = array.length
+      var temporaryValue
+      var randomIndex
 
       // While there remain elements to shuffle...
-      while (0 !== currentIndex) {
-
+      while (currentIndex !== 0) {
         // Pick a remaining element...
         randomIndex = Math.floor(Math.random() * currentIndex)
         currentIndex -= 1
@@ -137,11 +137,11 @@ new Vue({
 
       return array
     },
-    getRandomMode: function() {
-      return (Math.floor(Math.random() * 2)) === 0 ? "guessFromEn" : "guessFromFr"
+    getRandomMode: function () {
+      return (Math.floor(Math.random() * 2)) === 0 ? 'guessFromEn' : 'guessFromFr'
     }
   },
-  created: function() {
+  created: function () {
     this.$http.get('words.json').then((response) => {
       response.json().then((data) => {
         this.words = data

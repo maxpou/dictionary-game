@@ -1,0 +1,18 @@
+{
+    "extends": "standard",
+    "parserOptions": {
+        "ecmaVersion": 2017
+    },
+    "installedESLint": true,
+    "plugins": [
+        "standard",
+        "promise"
+    ],
+    "globals": {
+        "Vue": true
+    },
+    "rules": {
+      "no-new": 0,
+      "promise/param-names": 0
+    }
+}
