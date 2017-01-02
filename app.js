@@ -24,6 +24,7 @@ Vue.component('word-proposition', {
           v-bind:class="[ isCorrect ? 'correct' : 'incorrect', { clicked: isClicked } ]"
           v-on:click='submitAnswer'>
           {{ printedProposition }}
+          <span v-if="isClicked && !isCorrect"> ({{ printedSolution }})</span>
         </div>
       </a>
     </div>`,
@@ -42,6 +43,13 @@ Vue.component('word-proposition', {
         return this.proposition.translation
       } else {
         return this.proposition.content
+      }
+    },
+    printedSolution: function () {
+      if (this.round.mode === 'guessFromEn') {
+        return this.proposition.content
+      } else {
+        return this.proposition.translation
       }
     }
   },
