@@ -1,6 +1,6 @@
 // @see http://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-get-parameters
 
-var QueryString = (function () {
+var QueryString = (function () { // eslint-disable-line no-unused-vars
   // This function is anonymous, is executed immediately and
   // the return value is assigned to QueryString!
   var queryString = {}

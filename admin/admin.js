@@ -32,15 +32,31 @@ Vue.component('word-add', {
 
 Vue.component('word-item', {
   props: ['word', 'index'],
+  data: function () {
+    return {
+      mode: 'read'
+    }
+  },
   template: `
     <tr>
-      <td>{{ word.content }}</td>
-      <td>{{ word.translation }}</td>
       <td>
-        <div class="ui buttons">
-          <button class="ui yellow button" v-on:click="$emit('edit')">Edit</button>
+        <span v-if="mode === 'read'">{{ word.content }}</span>
+        <input v-if="mode === 'edit'" type="text" name="content" placeholder="the new word" v-model="word.content">
+      </td>
+      <td>
+        <span v-if="mode === 'read'">{{ word.translation }}</span>
+        <input v-if="mode === 'edit'" type="text" name="translation" placeholder="French translation" v-model="word.translation">
+      </td>
+      <td>
+        <div v-if="mode === 'read'" class="ui buttons">
+          <button class="ui yellow button" v-on:click="setMode('edit')">Edit</button>
           <div class="or"></div>
           <button class="ui red button" v-on:click="remove">Delete</button>
+        </div>
+        <div v-if="mode === 'edit'" class="ui buttons">
+          <button class="ui button" v-on:click="setMode('read')">cancel</button>
+          <div class="or"></div>
+          <button class="ui primary button" v-on:click="edit">Edit</button>
         </div>
       </td>
     </tr>
@@ -48,6 +64,13 @@ Vue.component('word-item', {
   methods: {
     remove: function () {
       this.$emit('remove')
+    },
+    edit: function () {
+      this.mode = 'read'
+      this.$emit('edit')
+    },
+    setMode: function (mode) {
+      this.mode = mode
     }
   }
 })
@@ -70,8 +93,13 @@ new Vue({
         this.$delete(this.words, index)
       })
     },
-    edit: function () {
-      window.alert('Todo !!!')
+    edit: function (index, updatedWord) {
+      console.log(index, updatedWord)
+      this.$http.patch(apiUrl + index + '.json?auth=' + auth, updatedWord).then((response) => {
+        response.json().then((data) => {
+          console.log(response)
+        })
+      })
     }
   },
   created: function () {

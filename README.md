@@ -1,5 +1,7 @@
 # Dictionary Game 🇫🇷 / 🇬🇧
 
+[![Build Status](https://travis-ci.org/maxpou/dictionary-game.svg?branch=master)](https://travis-ci.org/maxpou/dictionary-game)
+
 Just a small web app to improve my english vocabulary.
 
 It uses: 
@@ -12,7 +14,8 @@ It uses:
 And also ES6/7 features:
 
 * [Promises](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise)
-* [Async/await functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+* [Async/await functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)  
+**Important:** Do not work yet on all browsers. Checkout: [caniuse.com/#search=await](http://caniuse.com/#search=await)
 * [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
 ## Bypass Firebase
@@ -25,8 +28,16 @@ var dataUrl = 'words.json'
 
 ## Admin & Firebase
 
-Why I don't use array: https://firebase.googleblog.com/2014/04/best-practices-arrays-in-firebase.html
-Get a firebase token, see the official doc: https://firebase.google.com/docs/reference/rest/database/user-auth
+An admin UI is available on `/admin/`. You must provide the Firebase auth token in the URL if write operation require authentification (rule tab).
+
+  ```
+  http://your-app-domain.com/admin/?auth=<auhToken>
+  ```
+
+**Notes:**
+
+* [Why I don't use array with Firebase](https://firebase.googleblog.com/2014/04/best-practices-arrays-in-firebase.html)
+* [How to get a Firebase token (official doc)](https://firebase.google.com/docs/reference/rest/database/user-auth)
 
 ## Dev tools
 
@@ -42,5 +53,5 @@ Available command:
 
 * `npm start`: start a mini HTTP server, then go to: 
   * [127.0.0.1:8080](http://127.0.0.1:8080)
-  * [127.0.0.1:8080/admin/?auth=<auhToken>](http://127.0.0.1:8080/admin/?auth=<auhToken>)
+  * [127.0.0.1:8080/admin/?auth=](http://127.0.0.1:8080/admin/?auth=)
 * `npm run lint`: lint app.js and admin.js

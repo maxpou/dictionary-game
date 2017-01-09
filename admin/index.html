@@ -30,7 +30,7 @@
           v-bind:word="word"
           v-bind:index="index"
           v-on:remove="remove(index)"
-          v-on:edit="edit()"
+          v-on:edit="edit(index, word)"
         ></tr>
       </tbody>
     </table>
