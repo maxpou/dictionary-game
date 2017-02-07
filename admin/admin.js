@@ -1,5 +1,5 @@
-var apiUrl = 'https://translate-2f28d.firebaseio.com/'
-let auth = QueryString.auth
+const apiUrl = 'https://translate-2f28d.firebaseio.com/'
+const auth = QueryString.auth
 
 Vue.component('word-add', {
   data: function () {
@@ -94,12 +94,7 @@ new Vue({
       })
     },
     edit: function (index, updatedWord) {
-      console.log(index, updatedWord)
-      this.$http.patch(apiUrl + index + '.json?auth=' + auth, updatedWord).then((response) => {
-        response.json().then((data) => {
-          console.log(response)
-        })
-      })
+      this.$http.patch(apiUrl + index + '.json?auth=' + auth, updatedWord)
     }
   },
   created: function () {

@@ -1,5 +1,5 @@
-// 'words.json'
-var dataUrl = 'https://translate-2f28d.firebaseio.com/.json'
+// const dataUrl = './words.json'
+const dataUrl = 'https://translate-2f28d.firebaseio.com/.json'
 
 Vue.component('word-current', {
   props: ['round'],
@@ -105,7 +105,7 @@ new Vue({
     },
     verify: async function (userproposition) {
       if (userproposition === this.round.currentWord) {
-        await this.sleep(500)
+        await this.sleep(700)
         await this.reinitialize()
         await this.success()
       } else {
@@ -127,7 +127,7 @@ new Vue({
       })
     },
     sleep: function (ms) {
-      return new Promise(r => setTimeout(r, ms))
+      return new Promise((resolve) => setTimeout(resolve, ms))
     },
     shuffleArray: function (array) {
       var currentIndex = array.length
