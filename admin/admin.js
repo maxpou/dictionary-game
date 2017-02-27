@@ -4,7 +4,9 @@ const auth = QueryString.auth
 Vue.component('word-add', {
   data: function () {
     return {
-      newword: {}
+      newword: {
+        enabled: true
+      }
     }
   },
   template: `
@@ -16,6 +18,9 @@ Vue.component('word-add', {
         <input type="text" name="translation" placeholder="French translation" v-model="newword.translation">
       </td>
       <td>
+        <input type="checkbox" name="enabled" v-model="newword.enabled">
+      </td>
+      <td>
         <button class="ui primary button" v-on:click="addWord">
           Save
         </button>
@@ -25,7 +30,7 @@ Vue.component('word-add', {
   methods: {
     addWord: function () {
       this.$emit('add', this.newword)
-      this.newword = {}
+      Object.assign(this.$data, this.$options.data())
     }
   }
 })
@@ -46,6 +51,9 @@ Vue.component('word-item', {
       <td>
         <span v-if="mode === 'read'">{{ word.translation }}</span>
         <input v-if="mode === 'edit'" type="text" name="translation" placeholder="French translation" v-model="word.translation">
+      </td>
+      <td>
+        <input type="checkbox" name="enabled" v-model="word.enabled" v-bind:disabled="mode === 'read'">
       </td>
       <td>
         <div v-if="mode === 'read'" class="ui buttons">
@@ -82,11 +90,11 @@ new Vue({
   },
   methods: {
     add: function (newword) {
-      this.$http.post(apiUrl + '.json?auth=' + auth, newword).then((response) => {
-        response.json().then((data) => {
-          this.$set(this.words, data.name, newword)
-        })
-      })
+      // this.$http.post(apiUrl + '.json?auth=' + auth, newword).then((response) => {
+      //   response.json().then((data) => {
+      //     this.$set(this.words, data.name, newword)
+      //   })
+      // })
     },
     remove: function (index) {
       this.$http.delete(apiUrl + index + '.json?auth=' + auth).then(() => {

@@ -1,133 +1,177 @@
 [{
   "content": "bribery",
-  "translation": "corruption"
+  "translation": "corruption",
+  "enabled": true
 }, {
   "content": "breakdown",
-  "translation": "panne"
+  "translation": "panne",
+  "enabled": true
 }, {
   "content": "salary slip",
-  "translation": "fiche de salaire"
+  "translation": "fiche de salaire",
+  "enabled": true
 }, {
   "content": "sneering",
-  "translation": "ricanant"
+  "translation": "ricanant",
+  "enabled": true
 }, {
   "content": "jeopardise",
-  "translation": "compromettre"
+  "translation": "compromettre",
+  "enabled": true
 }, {
   "content": "deceiving",
-  "translation": "tromper"
+  "translation": "tromper",
+  "enabled": true
 }, {
   "content": "value for money",
-  "translation": "rapport qualité prix"
+  "translation": "rapport qualité prix",
+  "enabled": true
 }, {
   "content": "refundable",
-  "translation": "remboursable"
+  "translation": "remboursable",
+  "enabled": true
 }, {
   "content": "harsh",
-  "translation": "dur/sévère"
+  "translation": "dur/sévère",
+  "enabled": true
 }, {
   "content": "inconsistent",
-  "translation": "incohérent"
+  "translation": "incohérent",
+  "enabled": true
 }, {
   "content": "within reason tho",
-  "translation": "dans la mesure du raisonnable"
+  "translation": "dans la mesure du raisonnable",
+  "enabled": true
 }, {
   "content": "slap",
-  "translation": "gifler"
+  "translation": "gifler",
+  "enabled": true
 }, {
   "content": "genuinely",
-  "translation": "vraiment"
+  "translation": "vraiment",
+  "enabled": false
 }, {
   "content": "backbone",
-  "translation": "colonne vertébrale"
+  "translation": "colonne vertébrale",
+  "enabled": false
 }, {
   "content": "spud",
-  "translation": "patate"
+  "translation": "patate",
+  "enabled": false
 }, {
   "content": "every now and then",
-  "translation": "de temps en temps"
+  "translation": "de temps en temps",
+  "enabled": false
 }, {
   "content": "mess",
-  "translation": "désordre"
+  "translation": "désordre",
+  "enabled": true
 }, {
   "content": "at glance",
-  "translation": "Au coup d'oeil"
+  "translation": "Au coup d'oeil",
+  "enabled": true
 }, {
   "content": "pitfall",
-  "translation": "piège / embûches"
+  "translation": "piège / embûches",
+  "enabled": true
 }, {
   "content": "voucher",
-  "translation": "bon / reçu"
+  "translation": "bon / reçu",
+  "enabled": true
 }, {
   "content": "ungrateful",
-  "translation": "ingrat"
+  "translation": "ingrat",
+  "enabled": true
 }, {
   "content": "impediment",
-  "translation": "obstacle"
+  "translation": "obstacle",
+  "enabled": true
 }, {
   "content": "disease",
-  "translation": "maladie"
+  "translation": "maladie",
+  "enabled": true
 }, {
   "content": "boundary",
-  "translation": "frontière / limite"
+  "translation": "frontière / limite",
+  "enabled": true
 }, {
   "content": "upset",
-  "translation": "bouleverser / désapointé"
+  "translation": "bouleverser / désapointé",
+  "enabled": true
 }, {
   "content": "beyond",
-  "translation": "au-delà"
+  "translation": "au-delà",
+  "enabled": true
 }, {
   "content": "baffling",
-  "translation": "déconcertant"
+  "translation": "déconcertant",
+  "enabled": true
 }, {
   "content": "exhausting",
-  "translation": "épuisant"
+  "translation": "épuisant",
+  "enabled": true
 }, {
   "content": "lack",
-  "translation": "manquer de"
+  "translation": "manquer de",
+  "enabled": false
 }, {
   "content": "carry out",
-  "translation": "effectuer / réaliser"
+  "translation": "effectuer / réaliser",
+  "enabled": false
 }, {
   "content": "furniture",
-  "translation": "meubles"
+  "translation": "meubles",
+  "enabled": false
 }, {
   "content": "fit",
-  "translation": "ajustement"
+  "translation": "ajustement",
+  "enabled": false
 }, {
   "content": "pal",
-  "translation": "copain"
+  "translation": "copain",
+  "enabled": false
 }, {
   "content": "wipe",
-  "translation": "essuyer / lingette"
+  "translation": "essuyer / lingette",
+  "enabled": false
 }, {
   "content": "guilty",
-  "translation": "coupable"
+  "translation": "coupable",
+  "enabled": false
 }, {
   "content": "death row",
-  "translation": "couloir de la mort"
+  "translation": "couloir de la mort",
+  "enabled": false
 }, {
   "content": "rife",
-  "translation": "répandu / riche"
+  "translation": "répandu / riche",
+  "enabled": false
 }, {
   "content": "sneak",
-  "translation": "se faufiler / mode furtif"
+  "translation": "se faufiler / mode furtif",
+  "enabled": false
 }, {
   "content": "to startle",
-  "translation": "effrayer"
+  "translation": "effrayer",
+  "enabled": false
 }, {
   "content": "starving",
-  "translation": "affamé"
+  "translation": "affamé",
+  "enabled": false
 }, {
   "content": "outbreak",
-  "translation": "déclenchement / début"
+  "translation": "déclenchement / début",
+  "enabled": false
 }, {
   "content": "nowadays",
-  "translation": "aujourd'hui / de nos jours"
+  "translation": "aujourd'hui / de nos jours",
+  "enabled": false
 }, {
   "content": "cough",
-  "translation": "toux"
+  "translation": "toux",
+  "enabled": false
 }, {
   "content": "take over",
-  "translation": "prendre le contrôle"
+  "translation": "prendre le contrôle",
+  "enabled": false
 }]
