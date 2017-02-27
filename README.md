@@ -1,6 +1,6 @@
 # Dictionary Game 🇫🇷 / 🇬🇧
 
-[![Build Status](https://travis-ci.org/maxpou/dictionary-game.svg?branch=master)](https://travis-ci.org/maxpou/dictionary-game)
+[![Build Status](https://travis-ci.org/maxpou/dictionary-game.svg?branch=gh-pages)](https://travis-ci.org/maxpou/dictionary-game)
 
 Just a small web app to improve my english vocabulary.
 
