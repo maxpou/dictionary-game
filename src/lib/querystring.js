@@ -1,6 +1,6 @@
-// @see http://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-get-parameters
+// @see http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
 
-exports.queryString = function (name, url) {
+export default function queryString (name, url) {
   if (!url) {
     url = window.location.href
   }

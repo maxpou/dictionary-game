@@ -28,8 +28,7 @@ import wordItem from '../components/Admin/wordItem.vue'
 import queryString from '../lib/querystring'
 
 const apiUrl = 'https://translate-2f28d.firebaseio.com/'
-const auth = queryString.auth
-console.log(auth)
+const auth = queryString('auth')
 
 export default {
   name: 'Admin',

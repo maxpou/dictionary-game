@@ -51,7 +51,10 @@ npm install
 
 Available command:
 
-* `npm start`: start a mini HTTP server, then go to: 
-  * [127.0.0.1:8080](http://127.0.0.1:8080)
-  * [127.0.0.1:8080/admin/?auth=](http://127.0.0.1:8080/admin/?auth=)
-* `npm run lint`: lint app.js and admin.js
+* `npm run dev`: start a mini HTTP server (localhost:8080)
+* `npm run lint`: lint code
+* `npm run build` build for production with minification
+* `npm run build --report` build for production and view the bundle analyzer report
+* `npm run unit`: run unit tests
+* `npm run e2e`: run e2e tests
+* `npm test`: run all tests
