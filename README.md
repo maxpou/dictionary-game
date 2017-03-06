@@ -4,34 +4,36 @@
 
 Just a small web app to improve my english vocabulary.
 
-It uses: 
+## What's Included: 
 
 * [VueJs 2](https://vuejs.org/): an awesome JS Framework ❤️
   * [vue-resource](https://github.com/pagekit/vue-resource): Vuejs extension for XMLHttpRequest
-* [Firebase](https://console.firebase.google.com/): kinda database with REST endpoint
+  * [vue-router](https://router.vuejs.org/en/)
+  * Unit Tests (run in PhantomJS with Karma + Mocha + karma-webpack)
+  * End-to-end tests (with Nightwatch)
+* [Firebase](https://console.firebase.google.com/): database with an API endpoint
 * [SemanticUI](http://semantic-ui.com/): CSS Framework.
 
-And also ES6/7 features:
+And also ES6/next features ([Promises](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise), [Async/await functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function), [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions))
 
-* [Promises](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise)
-* [Async/await functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)  
-**Important:** Do not work yet on all browsers. Checkout: [caniuse.com/#search=await](http://caniuse.com/#search=await)
-* [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+The file architecture is based on [Vuejs webpack template](http://vuejs-templates.github.io/webpack/).
+
 
 ## Bypass Firebase
 
 If you don't want Firebase, you can use a JSON file instead. See `words.json` and adapt the first line of `app.js`:
 
-```js
-var dataUrl = 'words.json'
-```
+  ```js
+  var dataUrl = 'words.json'
+  ```
+
 
 ## Admin & Firebase
 
-An admin UI is available on `/admin/`. You must provide the Firebase auth token in the URL if write operation require authentification (rule tab).
+An admin UI is available on `/#/admin/`. You must provide the Firebase auth token in the URL if write operation require authentification (rule tab).
 
   ```
-  http://your-app-domain.com/admin/?auth=<auhToken>
+  http://your-app-domain.com/#/admin?auth=your-auth-id
   ```
 
 **Notes:**
