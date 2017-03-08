@@ -28,7 +28,6 @@
 
 <script>
 export default {
-  name: 'wordItem',
   props: ['word', 'index'],
   data: function () {
     return {

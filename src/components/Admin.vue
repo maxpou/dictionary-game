@@ -31,7 +31,6 @@ const apiUrl = 'https://translate-2f28d.firebaseio.com/'
 const auth = queryString('auth')
 
 export default {
-  name: 'Admin',
   components: { wordAdd, wordItem },
   data: function () {
     return {

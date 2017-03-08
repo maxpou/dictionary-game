@@ -1,11 +1,13 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1 id="appTitle">{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
       <li><a href="/#/admin">Admin</a></li>
       <li><a href="/#/game">Game</a></li>
       <br>
+    </ul>
+    <ul>
       <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
     </ul>
   </div>
@@ -13,10 +15,9 @@
 
 <script>
 export default {
-  name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Dictionary Game'
     }
   }
 }
@@ -24,6 +25,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+h1#appTitle {
+  margin-top: 60px;
+}
+
 h1, h2 {
   font-weight: normal;
 }

@@ -16,6 +16,24 @@ module.exports = {
       .assert.elementCount('div.segment', 4)
       .assert.elementCount('div.segment.correct', 1)
       .assert.elementCount('div.segment.incorrect', 3)
+      .assert.elementCount('div.segment.clicked', 0)
+      .assert.elementNotPresent('div.indicating.progress')
+
+    browser
+      .click('div.segment.correct')
+      .assert.elementNotPresent('div.indicating.progress')
+      .assert.elementCount('div.segment.incorrect.clicked', 0)
+      .assert.elementCount('div.segment.correct.clicked', 1)
+      .pause(700)
+      .assert.containsText('div.indicating.progress div div', '1 / 1 (100%)')
+
+    browser
+      .click('div.segment.incorrect')
+      .assert.elementCount('div.segment.incorrect.clicked', 1)
+      .assert.elementCount('div.segment.correct.clicked', 0)
+      .assert.containsText('div.indicating.progress div div', '1 / 2 (50%)')
+
+    browser
       .end()
   }
 }

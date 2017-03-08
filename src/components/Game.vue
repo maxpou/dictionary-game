@@ -22,7 +22,6 @@ import score from '../components/Game/score'
 const apiUrl = 'https://translate-2f28d.firebaseio.com/'
 
 export default {
-  name: 'Game',
   components: { wordCurrent, wordProposition, score },
   data: function () {
     return {

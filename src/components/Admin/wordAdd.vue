@@ -19,7 +19,6 @@
 
 <script>
 export default {
-  name: 'wordAdd',
   data: function () {
     return {
       newword: {

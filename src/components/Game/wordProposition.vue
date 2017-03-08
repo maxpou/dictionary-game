@@ -12,7 +12,6 @@
 
 <script>
 export default {
-  name: 'wordProposition',
   props: ['proposition', 'round'],
   data: function () {
     return {
@@ -26,16 +25,14 @@ export default {
     printedProposition: function () {
       if (this.round.mode === 'guessFromEn') {
         return this.proposition.translation
-      } else {
-        return this.proposition.content
       }
+      return this.proposition.content
     },
     printedSolution: function () {
       if (this.round.mode === 'guessFromEn') {
         return this.proposition.content
-      } else {
-        return this.proposition.translation
       }
+      return this.proposition.translation
     }
   },
   methods: {

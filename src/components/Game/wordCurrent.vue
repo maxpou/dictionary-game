@@ -4,15 +4,13 @@
 
 <script>
 export default {
-  name: 'wordItem',
   props: ['round'],
   computed: {
     wordToGuess: function () {
       if (this.round.mode === 'guessFromEn') {
         return this.round.currentWord.content
-      } else {
-        return this.round.currentWord.translation
       }
+      return this.round.currentWord.translation
     }
   }
 }

@@ -1,14 +1,13 @@
 <template>
   <div v-if="totalScorePercentage" class="ui indicating progress">
     <div class="bar" v-bind:style="{ width: totalScorePercentage + '%' }">
-      <div class="progress">{{ score.success }} / {{ this.score.success + this.score.errors }} ({{ totalScorePercentage }}% )</div>
+      <div class="progress">{{ score.success }} / {{ this.score.success + this.score.errors }} ({{ totalScorePercentage }}%)</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'score',
   props: ['score'],
   computed: {
     totalScorePercentage: function () {
