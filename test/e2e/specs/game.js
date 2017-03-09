@@ -32,6 +32,11 @@ module.exports = {
       .assert.elementCount('div.segment.incorrect.clicked', 1)
       .assert.elementCount('div.segment.correct.clicked', 0)
       .assert.containsText('div.indicating.progress div div', '1 / 2 (50%)')
+      .click('div.segment.correct')
+      .assert.elementCount('div.segment.incorrect.clicked', 1)
+      .assert.elementCount('div.segment.correct.clicked', 1)
+      .pause(700)
+      .assert.containsText('div.indicating.progress div div', '2 / 3 (66%)')
 
     browser
       .end()
