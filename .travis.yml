@@ -2,9 +2,6 @@ sudo: required
 
 dist: trusty
 
-branches:
-  gh_pages: true
-
 env:
   - TEST_SUITE=lint
   - TEST_SUITE=unit
@@ -39,7 +36,6 @@ deploy:
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   local_dir: dist
-  target_branch: deploy
   on:
     branch: master
 
