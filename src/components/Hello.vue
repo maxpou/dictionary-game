@@ -3,8 +3,8 @@
     <h1 id="appTitle">{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
-      <li><a href="/#/admin">Admin</a></li>
-      <li><a href="/#/game">Game</a></li>
+      <li><router-link to="/admin">Admin</router-link></li>
+      <li><router-link to="/game">Game</router-link></li>
       <br>
     </ul>
     <ul>
