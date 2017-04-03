@@ -25,10 +25,7 @@
 <script>
 import wordAdd from '../components/Admin/wordAdd.vue'
 import wordItem from '../components/Admin/wordItem.vue'
-import queryString from '../lib/querystring'
-
-const apiUrl = 'https://translate-2f28d.firebaseio.com/'
-const auth = queryString('auth')
+import * as wordApi from '../api/words'
 
 export default {
   components: { wordAdd, wordItem },
@@ -39,26 +36,22 @@ export default {
   },
   methods: {
     add: function (newword) {
-      this.$http.post(apiUrl + '.json?auth=' + auth, newword).then((response) => {
-        response.json().then((data) => {
-          this.$set(this.words, data.name, newword)
-        })
+      wordApi.add(newword).then((data) => {
+        this.$set(this.words, data.name, newword)
       })
     },
     remove: function (index) {
-      this.$http.delete(apiUrl + index + '.json?auth=' + auth).then(() => {
+      wordApi.remove(index).then(() => {
         this.$delete(this.words, index)
       })
     },
     edit: function (index, updatedWord) {
-      this.$http.patch(apiUrl + index + '.json?auth=' + auth, updatedWord)
+      wordApi.update(index, updatedWord)
     }
   },
   created: function () {
-    this.$http.get(apiUrl + '.json').then((response) => {
-      response.json().then((data) => {
-        this.words = data
-      })
+    wordApi.findAll().then((data) => {
+      this.words = data
     })
   }
 }
