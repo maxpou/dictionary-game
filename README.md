@@ -1,6 +1,7 @@
-# Dictionary Game 🇫🇷 / 🇬🇧
+# Dictionary Game
 
-[![Build Status](https://travis-ci.org/maxpou/dictionary-game.svg?branch=master)](https://travis-ci.org/maxpou/dictionary-game)
+[![Build Status](https://travis-ci.org/maxpou/dictionary-game.svg?branch=master)](https://travis-ci.org/maxpou/dictionary-game) [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
 
 Just a small web app to improve my english vocabulary.
 
@@ -14,27 +15,25 @@ Just a small web app to improve my english vocabulary.
 * [Firebase](https://console.firebase.google.com/): database with an API endpoint
 * [SemanticUI](http://semantic-ui.com/): CSS Framework.
 
-And also ES6/next features ([Promises](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise), [Async/await functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function), [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions))
+And also ES6/7 features ([Promises](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise), [Async/await functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function), [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions))
 
 The file architecture is based on [Vuejs webpack template](http://vuejs-templates.github.io/webpack/).
 
+## Firebase API
 
-## Bypass Firebase
-
-If you don't want Firebase, you can use a JSON file instead. See `words.json` and adapt the first line of `app.js`:
-
-  ```js
-  var dataUrl = 'words.json'
-  ```
-
-
-## Admin & Firebase
-
-An admin UI is available on `/#/admin/`. You must provide the Firebase auth token in the URL if write operation require authentification (rule tab).
+This application use Firebase as Web API.  
+To manage words&translations, an UI is available at `/#/admin/`. You must provide the Firebase auth token in the URL if write operation require authentification (rule tab).
 
   ```
   http://your-app-domain.com/#/admin?auth=your-auth-id
   ```
+
+In this project there is 2 differents endpoints:
+
+API ENDPOINTS                                  | Environment                   | Access
+---------------------------------------------- | ----------------------------- | ----------
+<https://translate-2f28d.firebaseio.com/>      | Read only (write needs token) | Production
+<https://translate-test-aee8f.firebaseio.com/> | Read/Write                    | Dev / Test
 
 **Notes:**
 
@@ -42,14 +41,6 @@ An admin UI is available on `/#/admin/`. You must provide the Firebase auth toke
 * [How to get a Firebase token (official doc)](https://firebase.google.com/docs/reference/rest/database/user-auth)
 
 ## Dev tools
-
-If you don't want to install NPM on your machine, you can use Docker :whale::
-
-```bash
-docker build -t dico --rm .
-docker run -it -v $PWD:/src -p 127.0.0.1:8080:8080 dico bash
-npm install
-```
 
 Available command:
 
@@ -60,3 +51,8 @@ Available command:
 * `npm run unit`: run unit tests
 * `npm run e2e`: run e2e tests
 * `npm test`: run all tests
+
+## Deployment
+
+This app is hosted by [Github Pages](https://pages.github.com/) and the Deployment is fulfilled by [Travis CI](https://travis-ci.org/maxpou/dictionary-game) (lint+tests must be green).
+

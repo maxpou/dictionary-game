@@ -3,7 +3,7 @@
     <thead>
       <tr>
         <th></th>
-        <th>🇫🇷 Traduction</th>
+        <th>Translation</th>
         <th>Enabled?</th>
         <th>Actions</th>
       </tr>
