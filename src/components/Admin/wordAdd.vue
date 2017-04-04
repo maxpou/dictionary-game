@@ -4,7 +4,7 @@
       <input type="text" name="content" placeholder="the new word" v-model="newword.content">
     </td>
     <td>
-      <input type="text" name="translation" placeholder="French translation" v-model="newword.translation">
+      <input type="text" name="translation" placeholder="translation" v-model="newword.translation">
     </td>
     <td>
       <input type="checkbox" name="enabled" v-model="newword.enabled">
