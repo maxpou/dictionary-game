@@ -18,8 +18,7 @@
 import wordCurrent from '../components/Game/wordCurrent'
 import wordProposition from '../components/Game/wordProposition'
 import score from '../components/Game/score'
-
-const apiUrl = 'https://translate-2f28d.firebaseio.com/'
+import * as wordApi from '../api/words'
 
 export default {
   components: { wordCurrent, wordProposition, score },
@@ -93,12 +92,10 @@ export default {
     }
   },
   created: function () {
-    this.$http.get(apiUrl + '.json').then((response) => {
-      response.json().then((data) => {
-        this.words = Object.values(data)
-      }).then(() => {
-        this.pickNewWords()
-      })
+    wordApi.findAll().then((data) => {
+      this.words = Object.values(data)
+    }).then(() => {
+      this.pickNewWords()
     })
   }
 }
