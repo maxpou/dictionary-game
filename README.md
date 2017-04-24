@@ -40,7 +40,7 @@ API ENDPOINTS                                  | Environment                   |
 * [Why I don't use array with Firebase](https://firebase.googleblog.com/2014/04/best-practices-arrays-in-firebase.html)
 * [How to get a Firebase token (official doc)](https://firebase.google.com/docs/reference/rest/database/user-auth)
 
-## Dev tools
+## Dev tools
 
 Available command:
 
