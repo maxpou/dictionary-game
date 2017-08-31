@@ -10,7 +10,7 @@
 export default {
   props: ['score'],
   computed: {
-    totalScorePercentage: function () {
+    totalScorePercentage () {
       return Math.floor(100 * this.score.success / (this.score.success + this.score.errors))
     }
   }

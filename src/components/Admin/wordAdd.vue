@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  data: function () {
+  data () {
     return {
       newword: {
         enabled: true
@@ -27,7 +27,7 @@ export default {
     }
   },
   methods: {
-    addWord: function () {
+    addWord () {
       this.$emit('add', this.newword)
       Object.assign(this.$data, this.$options.data())
     }
