@@ -29,20 +29,20 @@
 <script>
 export default {
   props: ['word', 'index'],
-  data: function () {
+  data () {
     return {
       mode: 'read'
     }
   },
   methods: {
-    remove: function () {
+    remove () {
       this.$emit('remove')
     },
-    edit: function () {
+    edit () {
       this.mode = 'read'
       this.$emit('edit')
     },
-    setMode: function (mode) {
+    setMode (mode) {
       this.mode = mode
     }
   }

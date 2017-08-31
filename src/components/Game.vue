@@ -37,12 +37,12 @@ export default {
     }
   },
   methods: {
-    pickNewWords: function () {
+    pickNewWords () {
       this.round.mode = this.getRandomMode()
       this.round.propositions = this.shuffleArray(this.words).slice(0, 4)
       this.round.currentWord = this.round.propositions[Math.floor(Math.random() * 4)]
     },
-    verify: async function (userproposition) {
+    async verify (userproposition) {
       if (userproposition === this.round.currentWord) {
         await this.sleep(700)
         await this.reinitialize()
@@ -51,27 +51,27 @@ export default {
         this.stats.errors++
       }
     },
-    success: function () {
+    success () {
       return new Promise(resolve => {
         this.stats.success++
         this.pickNewWords()
         resolve()
       })
     },
-    reinitialize: function () {
+    reinitialize () {
       return new Promise(resolve => {
         this.round.propositions = []
         this.round.currentWord = {}
         resolve()
       })
     },
-    sleep: function (ms) {
+    sleep (ms) {
       return new Promise((resolve) => setTimeout(resolve, ms))
     },
-    shuffleArray: function (array) {
-      var currentIndex = array.length
-      var temporaryValue
-      var randomIndex
+    shuffleArray (array) {
+      let currentIndex = array.length
+      let temporaryValue
+      let randomIndex
 
       // While there remain elements to shuffle...
       while (currentIndex !== 0) {
@@ -87,11 +87,11 @@ export default {
 
       return array
     },
-    getRandomMode: function () {
+    getRandomMode () {
       return (Math.floor(Math.random() * 2)) === 0 ? 'guessFromEn' : 'guessFromFr'
     }
   },
-  created: function () {
+  created () {
     wordApi.findAll().then((data) => {
       this.words = Object.values(data)
     }).then(() => {

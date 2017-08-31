@@ -6,7 +6,7 @@
 export default {
   props: ['round'],
   computed: {
-    wordToGuess: function () {
+    wordToGuess () {
       if (this.round.mode === 'guessFromEn') {
         return this.round.currentWord.content
       }

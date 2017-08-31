@@ -13,22 +13,22 @@
 <script>
 export default {
   props: ['proposition', 'round'],
-  data: function () {
+  data () {
     return {
       isClicked: false
     }
   },
   computed: {
-    isCorrect: function () {
+    isCorrect () {
       return this.proposition === this.round.currentWord
     },
-    printedProposition: function () {
+    printedProposition () {
       if (this.round.mode === 'guessFromEn') {
         return this.proposition.translation
       }
       return this.proposition.content
     },
-    printedSolution: function () {
+    printedSolution () {
       if (this.round.mode === 'guessFromEn') {
         return this.proposition.content
       }
@@ -36,7 +36,7 @@ export default {
     }
   },
   methods: {
-    submitAnswer: function () {
+    submitAnswer () {
       if (!this.isClicked) {
         this.isClicked = true
         this.$emit('submitanswer')
@@ -44,7 +44,7 @@ export default {
     }
   },
   watch: {
-    currentWord: function () {
+    currentWord () {
       this.isClicked = false
     }
   }

@@ -29,27 +29,27 @@ import * as wordApi from '../api/words'
 
 export default {
   components: { wordAdd, wordItem },
-  data: function () {
+  data () {
     return {
       words: {}
     }
   },
   methods: {
-    add: function (newword) {
+    add (newword) {
       wordApi.add(newword).then((data) => {
         this.$set(this.words, data.name, newword)
       })
     },
-    remove: function (index) {
+    remove (index) {
       wordApi.remove(index).then(() => {
         this.$delete(this.words, index)
       })
     },
-    edit: function (index, updatedWord) {
+    edit (index, updatedWord) {
       wordApi.update(index, updatedWord)
     }
   },
-  created: function () {
+  created () {
     wordApi.findAll().then((data) => {
       this.words = data
     })
