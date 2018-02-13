@@ -10,7 +10,7 @@
       <input type="checkbox" name="enabled" v-model="newword.enabled">
     </td>
     <td>
-      <button class="ui primary button" v-on:click="addWord">
+      <button class="ui primary button" @click="addWord">
         Save
       </button>
     </td>

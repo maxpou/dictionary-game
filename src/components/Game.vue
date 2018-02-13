@@ -1,14 +1,15 @@
 <template>
   <div>
-    <score v-bind:score="stats"></score>
-    <word-current v-bind:round="round"></word-current>
+    <score :score="stats"/>
+    <word-current :round="round"/>
 
     <div class="ui two column stackable grid">
-      <word-proposition v-for="proposition in round.propositions"
-       :key="proposition.id"
-        v-bind:proposition="proposition"
-        v-bind:round="round"
-        v-on:submitanswer="verify(proposition)"
+      <word-proposition
+        v-for="proposition in round.propositions"
+        :key="proposition.id"
+        :proposition="proposition"
+        :round="round"
+        @submitanswer="verify(proposition)"
       ></word-proposition>
     </div>
   </div>
@@ -22,7 +23,7 @@ import * as wordApi from '../api/words'
 
 export default {
   components: { wordCurrent, wordProposition, score },
-  data: function () {
+  data () {
     return {
       words: [],
       round: {
@@ -59,21 +60,21 @@ export default {
       })
     },
     reinitialize () {
-      return new Promise(resolve => {
+      return new Promise(async resolve => {
         this.round.propositions = []
         this.round.currentWord = {}
+        await this.$nextTick()
         resolve()
       })
     },
     sleep (ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms))
+      return new Promise(resolve => setTimeout(resolve, ms))
     },
     shuffleArray (array) {
       let currentIndex = array.length
       let temporaryValue
       let randomIndex
 
-      // While there remain elements to shuffle...
       while (currentIndex !== 0) {
         // Pick a remaining element...
         randomIndex = Math.floor(Math.random() * currentIndex)
@@ -91,12 +92,10 @@ export default {
       return (Math.floor(Math.random() * 2)) === 0 ? 'guessFromEn' : 'guessFromFr'
     }
   },
-  created () {
-    wordApi.findAll().then((data) => {
-      this.words = Object.values(data)
-    }).then(() => {
-      this.pickNewWords()
-    })
+  async created () {
+    const wordData = await wordApi.findAll()
+    this.words = Object.values(wordData)
+    this.pickNewWords()
   }
 }
 </script>
