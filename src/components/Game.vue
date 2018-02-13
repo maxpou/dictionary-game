@@ -46,8 +46,8 @@ export default {
     async verify (userproposition) {
       if (userproposition === this.round.currentWord) {
         await this.sleep(700)
-        // await this.reinitialize()
-        // await this.success()
+        await this.reinitialize()
+        await this.success()
       } else {
         this.stats.errors++
       }
