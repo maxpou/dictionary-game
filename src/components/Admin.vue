@@ -12,7 +12,9 @@
       <tr is="word-add"
         @add="add($event)"
       ></tr>
-      <tr is="word-item" v-for="(word, index) in words"
+      <tr
+        is="word-item"
+        v-for="(word, index) in words"
         :word="word"
         :index="index"
         @remove="remove(index)"
