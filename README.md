@@ -3,11 +3,15 @@
 [![Build Status](https://travis-ci.org/maxpou/dictionary-game.svg?branch=master)](https://travis-ci.org/maxpou/dictionary-game) [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 
-Just a small web app to improve my english vocabulary.
+A small web app to improve my english vocabulary.
+
+![screenshots](./screenshots.png)
+
+## [DEMO](http://www.maxpou.fr/dictionary-game/#/)
 
 ## What's Included: 
 
-* [VueJs 2](https://vuejs.org/): an awesome JS Framework ❤️
+* [Vue.js](https://vuejs.org/): an awesome JS Framework ❤️
   * [vue-resource](https://github.com/pagekit/vue-resource): Vuejs extension for XMLHttpRequest
   * [vue-router](https://router.vuejs.org/en/)
   * Unit Tests (run in PhantomJS with Karma + Mocha + karma-webpack)
@@ -15,9 +19,8 @@ Just a small web app to improve my english vocabulary.
 * [Firebase](https://console.firebase.google.com/): database with an API endpoint
 * [SemanticUI](http://semantic-ui.com/): CSS Framework.
 
-And also ES6/7 features ([Promises](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise), [Async/await functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function), [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions))
 
-The file architecture is based on [Vuejs webpack template](http://vuejs-templates.github.io/webpack/).
+File architecture is based on [Vuejs webpack template](http://vuejs-templates.github.io/webpack/).
 
 ## Firebase API
 

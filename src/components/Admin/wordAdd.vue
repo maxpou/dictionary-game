@@ -1,7 +1,7 @@
 <template>
   <tr>
     <td>
-      <input type="text" name="content" placeholder="the new word" v-model="newword.content">
+      <input type="text" name="content" placeholder="new word" v-model="newword.content">
     </td>
     <td>
       <input type="text" name="translation" placeholder="translation" v-model="newword.translation">
@@ -10,7 +10,7 @@
       <input type="checkbox" name="enabled" v-model="newword.enabled">
     </td>
     <td>
-      <button class="ui primary button" v-on:click="addWord">
+      <button class="ui primary button" @click="addWord">
         Save
       </button>
     </td>

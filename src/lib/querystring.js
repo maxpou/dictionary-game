@@ -5,8 +5,8 @@ export default function queryString (name, url) {
     url = window.location.href
   }
   name = name.replace(/[[\]]/g, '\\$&')
-  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)')
-  var results = regex.exec(url)
+  const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)')
+  const results = regex.exec(url)
   if (!results) {
     return null
   }

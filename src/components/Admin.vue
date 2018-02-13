@@ -10,13 +10,15 @@
     </thead>
     <tbody>
       <tr is="word-add"
-        v-on:add="add($event)"
+        @add="add($event)"
       ></tr>
-      <tr is="word-item" v-for="(word, index) in words"
-        v-bind:word="word"
-        v-bind:index="index"
-        v-on:remove="remove(index)"
-        v-on:edit="edit(index, word)"
+      <tr
+        is="word-item"
+        v-for="(word, index) in words"
+        :word="word"
+        :index="index"
+        @remove="remove(index)"
+        @edit="edit(index, word)"
       ></tr>
     </tbody>
   </table>
@@ -49,10 +51,9 @@ export default {
       wordApi.update(index, updatedWord)
     }
   },
-  created () {
-    wordApi.findAll().then((data) => {
-      this.words = data
-    })
+  async created () {
+    const data = await wordApi.findAll()
+    this.words = data
   }
 }
 </script>
