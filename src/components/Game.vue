@@ -20,6 +20,8 @@ import wordCurrent from '../components/Game/wordCurrent'
 import wordProposition from '../components/Game/wordProposition'
 import score from '../components/Game/score'
 import * as wordApi from '../api/words'
+import shuffleArray from '../services/shuffleArray'
+import { getCurentUser } from '../api/user'
 
 export default {
   components: { wordCurrent, wordProposition, score },
@@ -40,7 +42,7 @@ export default {
   methods: {
     pickNewWords () {
       this.round.mode = this.getRandomMode()
-      this.round.propositions = this.shuffleArray(this.words).slice(0, 4)
+      this.round.propositions = shuffleArray(this.words).slice(0, 4)
       this.round.currentWord = this.round.propositions[Math.floor(Math.random() * 4)]
     },
     async verify (userproposition) {
@@ -70,33 +72,15 @@ export default {
     sleep (ms) {
       return new Promise(resolve => setTimeout(resolve, ms))
     },
-    shuffleArray (array) {
-      let currentIndex = array.length
-      let temporaryValue
-      let randomIndex
-
-      while (currentIndex !== 0) {
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex)
-        currentIndex -= 1
-
-        // And swap it with the current element.
-        temporaryValue = array[currentIndex]
-        array[currentIndex] = array[randomIndex]
-        array[randomIndex] = temporaryValue
-      }
-
-      return array
-    },
     getRandomMode () {
       return (Math.floor(Math.random() * 2)) === 0 ? 'guessFromEn' : 'guessFromFr'
     }
   },
   async created () {
-    const wordData = await wordApi.findAll()
+    const user = await getCurentUser()
+    const wordData = await wordApi.findAll(user.uid)
     this.words = Object.values(wordData)
     this.pickNewWords()
   }
 }
 </script>
-
