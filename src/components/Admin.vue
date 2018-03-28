@@ -15,6 +15,7 @@
       <tr
         is="word-item"
         v-for="(word, index) in words"
+        :key="index"
         :word="word"
         :index="index"
         @remove="remove(index)"
@@ -28,32 +29,33 @@
 import wordAdd from '../components/Admin/wordAdd.vue'
 import wordItem from '../components/Admin/wordItem.vue'
 import * as wordApi from '../api/words'
+import { getCurentUser } from '../api/user'
 
 export default {
   components: { wordAdd, wordItem },
   data () {
     return {
-      words: {}
+      words: {},
+      currentUserUid: ''
     }
   },
   methods: {
-    add (newword) {
-      wordApi.add(newword).then((data) => {
-        this.$set(this.words, data.name, newword)
-      })
+    async add (newword) {
+      const newKey = await wordApi.add(this.currentUserUid, newword)
+      this.$set(this.words, newKey, newword)
     },
-    remove (index) {
-      wordApi.remove(index).then(() => {
-        this.$delete(this.words, index)
-      })
+    async remove (index) {
+      await wordApi.remove(this.currentUserUid, index)
+      this.$delete(this.words, index)
     },
     edit (index, updatedWord) {
-      wordApi.update(index, updatedWord)
+      wordApi.update(this.currentUserUid, index, updatedWord)
     }
   },
   async created () {
-    const data = await wordApi.findAll()
-    this.words = data
+    const user = await getCurentUser()
+    this.currentUserUid = user.uid
+    this.words = await wordApi.findAll(user.uid)
   }
 }
 </script>
