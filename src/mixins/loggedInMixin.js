@@ -1,11 +1,15 @@
+import { mapGetters } from 'vuex'
+
 const loggedInMixin = {
-  created: function () {
-    this.hello()
-  },
-  methods: {
-    hello: function () {
-      console.log('hello from mixin!')
+  data () {
+    return {
+      currentUser: {}
     }
+  },
+  computed: {
+    ...mapGetters([
+      'currentUser'
+    ])
   }
 }
 

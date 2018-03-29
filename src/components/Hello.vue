@@ -3,28 +3,24 @@
     <h1 id="appTitle">Dictionary Game</h1>
     <router-link to="/game" tag="button" class="massive ui positive fluid button">🎮 Play!</router-link>
     <router-link to="/admin" tag="button" class="massive ui positive fluid button">⚙️ Manage words</router-link>
-    <router-link v-if="!currentUserUid" to="/login" tag="button" class="massive ui positive fluid button">Login</router-link>
-    <button v-else class="massive ui positive fluid button" @click="logout()">logout</button>
+    <router-link to="/login" tag="button" class="massive ui positive fluid button">Login</router-link>
+    <button class="massive ui positive fluid button" @click="logout()">logout</button>
   </div>
 </template>
 
 <script>
-import {logout, getCurentUser} from '../api/user'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  data () {
-    return {
-      currentUserUid: ''
-    }
+  computed: {
+    ...mapGetters([
+      'isLoggedIn'
+    ])
   },
   methods: {
-    logout () {
-      logout()
-    }
-  },
-  async created () {
-    const user = await getCurentUser()
-    this.currentUserUid = user.uid
+    ...mapActions([
+      'logout'
+    ])
   }
 }
 </script>

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getCurentUser } from '../api/user'
+import { getCurentUser, logout } from '../api/user'
 
 Vue.use(Vuex)
 
@@ -12,7 +12,8 @@ const state = {
 }
 
 const getters = {
-  currentUser: (state) => state.user
+  currentUser: (state) => state.user,
+  isLoggedIn: (state) => state.user.uid !== ''
 }
 
 const actions = {
@@ -23,6 +24,10 @@ const actions = {
     } catch (error) {
       commit('NO_USER')
     }
+  },
+  logout ({ commit }) {
+    logout()
+    commit('NO_USER')
   }
 }
 
