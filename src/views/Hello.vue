@@ -1,10 +1,10 @@
 <template>
   <div class="ui container">
     <h1 id="appTitle">Dictionary Game</h1>
-    <router-link to="/game" tag="button" class="massive ui positive fluid button">🎮 Play!</router-link>
-    <router-link to="/admin" tag="button" class="massive ui positive fluid button">⚙️ Manage words</router-link>
-    <router-link to="/login" tag="button" class="massive ui positive fluid button">Login</router-link>
-    <button class="massive ui positive fluid button" @click="logout()">logout</button>
+    <router-link v-if="isLoggedIn" to="/game" tag="button" class="massive ui positive fluid button">🎮 Play!</router-link>
+    <router-link v-if="isLoggedIn" to="/admin" tag="button" class="massive ui positive fluid button">⚙️ Manage words</router-link>
+    <router-link v-if="!isLoggedIn" to="/login" tag="button" class="massive ui positive fluid button">Login</router-link>
+    <button v-else class="massive ui positive fluid button" @click="logout()">Logout</button>
   </div>
 </template>
 
