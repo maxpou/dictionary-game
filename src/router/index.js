@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Hello from '@/components/Hello'
-import Admin from '@/components/Admin'
-import Game from '@/components/Game'
-import Login from '@/components/Login'
+import Hello from '../views/Hello'
+import Admin from '../views/Admin'
+import Game from '../views/Game'
+import Login from '../views/Login'
 
 Vue.use(Router)
 
