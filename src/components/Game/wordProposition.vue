@@ -1,12 +1,11 @@
 <template>
   <div class="column">
-      <div class="ui segment"
-        v-bind:class="[ isCorrect ? 'correct' : 'incorrect', { clicked: isClicked } ]"
-        v-on:click='submitAnswer'>
-        {{ printedProposition }}
-        <span v-if="isClicked && !isCorrect"> ({{ printedSolution }})</span>
-      </div>
-    </a>
+    <div class="ui segment"
+      v-bind:class="[ isCorrect ? 'correct' : 'incorrect', { clicked: isClicked } ]"
+      v-on:click='submitAnswer'>
+      {{ printedProposition }}
+      <span v-if="isClicked && !isCorrect"> ({{ printedSolution }})</span>
+    </div>
   </div>
 </template>
 

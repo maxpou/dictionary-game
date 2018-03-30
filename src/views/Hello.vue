@@ -25,7 +25,6 @@ export default {
 }
 </script>
 
-
 <style scoped>
 h1#appTitle {
   font-weight: normal;
