@@ -23,10 +23,10 @@ export async function add (userUid, newword) {
   return newWordRef.key
 }
 
-export async function remove (userUid, index) {
-  return await database.ref(`/users/${userUid}/words/${index}`).remove()
+export function remove (userUid, index) {
+  return database.ref(`/users/${userUid}/words/${index}`).remove()
 }
 
-export async function update (userUid, index, updatedWord) {
-  return await database.ref(`/users/${userUid}/words/${index}`).update(updatedWord)
+export function update (userUid, index, updatedWord) {
+  return database.ref(`/users/${userUid}/words/${index}`).update(updatedWord)
 }

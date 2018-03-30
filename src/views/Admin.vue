@@ -45,7 +45,7 @@ export default {
       this.$set(this.words, newKey, newword)
     },
     async remove (index) {
-      await wordApi.remove(this.currentUserUid, index)
+      wordApi.remove(this.currentUserUid, index)
       this.$delete(this.words, index)
     },
     edit (index, updatedWord) {
