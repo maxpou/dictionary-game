@@ -1,13 +1,14 @@
 import firebase from 'firebase'
 
 const firebaseApp = firebase.initializeApp({
-  apiKey: 'AIzaSyDYAb6F__3GitGyJyYrfMuq3iSNNRj4OeY',
-  authDomain: 'translate-test-aee8f.firebaseapp.com',
-  databaseURL: 'https://translate-test-aee8f.firebaseio.com',
-  projectId: 'translate-test-aee8f',
-  storageBucket: 'translate-test-aee8f.appspot.com',
-  messagingSenderId: '133853624179'
+  apiKey: process.env.VUE_APP_APIKEY,
+  authDomain: process.env.VUE_APP_AUTHDOMAIN,
+  databaseURL: process.env.VUE_APP_DATABASEURL,
+  projectId: process.env.VUE_APP_PROJECTID,
+  storageBucket: process.env.VUE_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGINGSENDERID
 })
+
 const database = firebaseApp.database()
 
 export async function findAll (userUid) {
