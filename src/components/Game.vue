@@ -73,7 +73,7 @@ export default {
       return new Promise(resolve => setTimeout(resolve, ms))
     },
     getRandomMode () {
-      return (Math.floor(Math.random() * 2)) === 0 ? 'guessFromEn' : 'guessFromFr'
+      return (Math.floor(Math.random() * 2)) === 0 ? 'guessFromTranslation' : 'guessFromMainLanguage'
     }
   },
   async created () {

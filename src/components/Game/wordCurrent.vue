@@ -7,10 +7,10 @@ export default {
   props: ['round'],
   computed: {
     wordToGuess () {
-      if (this.round.mode === 'guessFromEn') {
-        return this.round.currentWord.content
+      if (this.round.mode === 'guessFromTranslation') {
+        return this.round.currentWord.translation
       }
-      return this.round.currentWord.translation
+      return this.round.currentWord.content
     }
   }
 }
