@@ -23,13 +23,13 @@ export default {
       return this.proposition === this.round.currentWord
     },
     printedProposition () {
-      if (this.round.mode === 'guessFromEn') {
+      if (this.round.mode !== 'guessFromTranslation') {
         return this.proposition.translation
       }
       return this.proposition.content
     },
     printedSolution () {
-      if (this.round.mode === 'guessFromEn') {
+      if (this.round.mode !== 'guessFromTranslation') {
         return this.proposition.content
       }
       return this.proposition.translation
