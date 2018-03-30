@@ -2,11 +2,6 @@ sudo: required
 
 dist: trusty
 
-env:
-  - TEST_SUITE=lint
-  - TEST_SUITE=unit
-  - TEST_SUITE=e2e
-
 language: node_js
 
 node_js: stable
@@ -15,21 +10,12 @@ cache:
   directories:
     - node_modules
 
-before_install:
-  - if [[ $TEST_SUITE = "e2e" ]]; then export CHROME_BIN=/usr/bin/google-chrome; fi
-  - if [[ $TEST_SUITE = "e2e" ]]; then export DISPLAY=:99.0; fi
-  - if [[ $TEST_SUITE = "e2e" ]]; then sh  -e /etc/init.d/xvfb start; fi
-  - if [[ $TEST_SUITE = "e2e" ]]; then sudo apt-get update; fi
-  - if [[ $TEST_SUITE = "e2e" ]]; then sudo apt-get install  -y libappindicator1 fonts-liberation; fi
-  - if [[ $TEST_SUITE = "e2e" ]]; then wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb; fi
-  - if [[ $TEST_SUITE = "e2e" ]]; then sudo dpkg -i google-chrome*.deb; fi
-
 script:
-  - if [[ $TEST_SUITE = "e2e" ]]; then jdk_switcher use oraclejdk8; fi
-  - "npm run $TEST_SUITE"
+  - "npm run lint"
+  - "npm test -- --coverage"
 
 before_deploy:
-  - npm run build
+  - "npm run build"
 
 deploy:
   provider: pages
@@ -38,4 +24,3 @@ deploy:
   local_dir: dist
   on:
     branch: master
-
