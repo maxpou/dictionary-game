@@ -19,5 +19,6 @@ export default {
 <style scoped>
 h1.ui.center.header {
   padding: 2em 3em;
+  color: #fff;
 }
 </style>
