@@ -1,42 +1,66 @@
 # Dictionary Game
 
-[![Build Status](https://travis-ci.org/maxpou/dictionary-game.svg?branch=master)](https://travis-ci.org/maxpou/dictionary-game) [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Build Status](https://travis-ci.org/maxpou/dictionary-game.svg?branch=master)](https://travis-ci.org/maxpou/dictionary-game) [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
 
 A small web app to improve my english vocabulary.
 
-![screenshots](./screenshots.png)
+![screenshots](./src/assets/screens/all-screens.png)
 
-## [DEMO](http://www.maxpou.fr/dictionary-game/#/)
+## [Go to the application](http://www.maxpou.fr/dictionary-game/#/)
 
 ## What's Included: 
 
 * [Vue.js](https://vuejs.org/): an awesome JS Framework ❤️
-  * [vue-resource](https://github.com/pagekit/vue-resource): Vuejs extension for XMLHttpRequest
   * [vue-router](https://router.vuejs.org/en/)
-  * Unit Tests (run in PhantomJS with Karma + Mocha + karma-webpack)
-  * End-to-end tests (with Nightwatch)
-* [Firebase](https://console.firebase.google.com/): database with an API endpoint
+  * [vuex](https://vuex.vuejs.org/en/): for state management
+* [jest](https://facebook.github.io/jest/): for unit testing
+* [Firebase](https://console.firebase.google.com/) for authentication + database
 * [SemanticUI](http://semantic-ui.com/): CSS Framework.
 
 
-File architecture is based on [Vuejs webpack template](http://vuejs-templates.github.io/webpack/).
+Based on [vue-cli 3](https://github.com/vuejs/vue-cli/blob/dev/docs/README.md#conventions) and follow his file structure/conventions.
 
-## Firebase API
 
-This application use Firebase as Web API.  
-To manage words&translations, an UI is available at `/#/admin/`. You must provide the Firebase auth token in the URL if write operation require authentification (rule tab).
+## Firebase
 
-  ```
-  http://your-app-domain.com/#/admin?auth=your-auth-id
-  ```
+This application use Firebase for Authentication and Data storage.  
+In this project, I use 2 project to separate environments:
 
-In this project there is 2 differents endpoints:
+API ENDPOINTS                                  | Environment       
+---------------------------------------------- | ------------------
+<https://translate-2f28d.firebaseio.com/>      | Production        
+<https://translate-test-aee8f.firebaseio.com/> | Dev / Test        
 
-API ENDPOINTS                                  | Environment                   | Access
----------------------------------------------- | ----------------------------- | ----------
-<https://translate-2f28d.firebaseio.com/>      | Read only (write needs token) | Production
-<https://translate-test-aee8f.firebaseio.com/> | Read/Write                    | Dev / Test
+Database access rules:
+
+```json
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}
+```
+
+Data structure:
+
+```js
+├── users/
+│   └── {userID}/
+|       └── words/
+│           ├── {wordId}/
+│               // example of a word:
+│               {
+│                 content: "a word",
+│                 enabled: true,
+│                 translation: "a word translation"
+│               }
+```
 
 **Notes:**
 
@@ -45,17 +69,15 @@ API ENDPOINTS                                  | Environment                   |
 
 ## Dev tools
 
-Available command:
+Available commands:
 
-* `npm run dev`: start a mini HTTP server (localhost:8080)
+* `npm run serve`: start a mini HTTP server
+* `npm run build` build for production
 * `npm run lint`: lint code
-* `npm run build` build for production with minification
-* `npm run build --report` build for production and view the bundle analyzer report
-* `npm run unit`: run unit tests
-* `npm run e2e`: run e2e tests
-* `npm test`: run all tests
+* `npm test`: run unit tests
+
+More information in the [official documentation](https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md)
 
 ## Deployment
 
 This app is hosted by [Github Pages](https://pages.github.com/) and the Deployment is fulfilled by [Travis CI](https://travis-ci.org/maxpou/dictionary-game) (lint+tests must be green).
-
