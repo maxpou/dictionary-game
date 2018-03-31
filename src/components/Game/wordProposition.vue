@@ -51,11 +51,17 @@ export default {
 </script>
 
 <style scoped>
+.ui.segment {
+  font-size: 1.8em;
+}
+
 .ui.segment.clicked.incorrect {
   background-color: red;
+  color: #fff;
 }
 
 .ui.segment.clicked.correct {
   background-color: green;
+  color: #fff;
 }
 </style>

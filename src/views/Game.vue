@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="game">
     <score :score="stats"/>
     <word-current :round="round"/>
 
-    <div class="ui two column stackable grid">
+    <div class="ui grid container two column stackable grid">
       <word-proposition
         v-for="proposition in round.propositions"
         :key="proposition.id"
@@ -84,3 +84,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.game {
+  height: 100%;
+  background-color: #6293ea;
+}
+</style>

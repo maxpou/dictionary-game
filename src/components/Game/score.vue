@@ -19,6 +19,6 @@ export default {
 
 <style scoped>
 .ui.progress .bar {
-  background-color: green;
+  background-color: #daa520;
 }
 </style>
