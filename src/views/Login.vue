@@ -23,7 +23,7 @@ export default {
         }
       },
       signInFlow: 'popup',
-      signInSuccessUrl: '/',
+      signInSuccessUrl: `${window.location.origin + window.location.pathname}`,
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID
