@@ -12,7 +12,11 @@ import firebaseui from 'firebaseui'
 
 export default {
   mounted () {
-    const ui = new firebaseui.auth.AuthUI(firebase.auth())
+    let ui = firebaseui.auth.AuthUI.getInstance()
+    if (!ui) {
+      ui = new firebaseui.auth.AuthUI(firebase.auth())
+    }
+
     const uiConfig = {
       callbacks: {
         signInSuccess (currentUser, credential, redirectUrl) {

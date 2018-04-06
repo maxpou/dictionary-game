@@ -1,8 +1,8 @@
-import firebase from 'firebase'
+import firebaseApp from './firebaseApp'
 
 const getCurentUser = () => {
   return new Promise((resolve, reject) => {
-    firebase.auth().onAuthStateChanged(user => {
+    firebaseApp.auth().onAuthStateChanged(user => {
       if (user) {
         resolve(user)
       } else {
@@ -11,7 +11,7 @@ const getCurentUser = () => {
     })
   })
 }
-const logout = () => firebase.auth().signOut()
+const logout = () => firebaseApp.auth().signOut()
 
 export {
   getCurentUser,
