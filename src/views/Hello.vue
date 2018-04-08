@@ -3,7 +3,7 @@
 
     <div class="ui inverted vertical masthead center aligned segment">
       <div class="ui container">
-        <div class="ui large secondary inverted pointing menu">
+        <div class="ui large secondary pointing menu">
           <div class="right item">
             <router-link v-if="!isLoggedIn" to="/login" class="ui inverted button">Login</router-link>
             <a v-else class="ui inverted button" @click="logout()">Logout</a>
@@ -18,7 +18,7 @@
         <h2>Learning new words has never been easier</h2>
 
         <div v-if="!isLoggedIn">
-          <router-link to="/login" class="ui huge primary button">create your account</router-link>
+          <router-link to="/login" class="ui huge primary button">Sign up - It's Free!</router-link>
         </div>
 
         <div v-else>
@@ -115,6 +115,36 @@ export default {
 .masthead.segment {
   min-height: 700px;
   padding: 1em 0em;
+}
+
+.masthead {
+  background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),
+    url(../assets/hero/background-mobile.jpg) no-repeat center center fixed !important;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
+}
+
+@media (min-width: 768px) {
+  .masthead {
+    background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),
+      url(../assets/hero/background-tablet.jpg) no-repeat center center fixed !important;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-size: cover !important;
+  }
+}
+@media (min-width: 992px) {
+  .masthead {
+    background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),
+      url(../assets/hero/background-desktop.jpg) no-repeat center center fixed !important;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-size: cover !important;
+  }
 }
 
 .masthead h1.ui.header {
