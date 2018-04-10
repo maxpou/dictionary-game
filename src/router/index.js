@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Hello from '../views/Hello'
-// import Login from '../views/Login'
 
 Vue.use(Router)
 
@@ -21,6 +20,9 @@ export default new Router({
           component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
         }
       ]
+    }, {
+      path: '/getting-started',
+      component: () => import(/* webpackChunkName: "gettingstarted" */ '../views/GettingStarted.vue')
     }, {
       path: '/admin',
       component: () => import(/* webpackChunkName: "admin" */ '../views/Admin.vue')
