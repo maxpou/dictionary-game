@@ -7,7 +7,7 @@ A small web app to improve my english vocabulary.
 
 ![screenshots](./src/assets/screens/all-screens.png)
 
-## [Go to the application](http://www.maxpou.fr/dictionary-game/#/)
+## [Go to the application](https://maxpou.github.io/dictionary-game/#/)
 
 ## What's Included: 
 
