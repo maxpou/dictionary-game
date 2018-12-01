@@ -1,6 +1,6 @@
 # Dictionary Game
 
-[![Build Status](https://travis-ci.org/maxpou/dictionary-game.svg?branch=master)](https://travis-ci.org/maxpou/dictionary-game) [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![Build Status](https://travis-ci.org/maxpou/dictionary-game.svg?branch=master)](https://travis-ci.org/maxpou/dictionary-game) [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest) [![Greenkeeper badge](https://badges.greenkeeper.io/maxpou/dictionary-game.svg)](https://greenkeeper.io/)
 
 
 A small web app to improve my english vocabulary.
