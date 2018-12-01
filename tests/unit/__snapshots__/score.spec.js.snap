@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`score.vue should render component 1`] = `"<div class=\\"ui indicating progress\\"><div class=\\"bar\\" style=\\"width: 82%;\\"><div class=\\"progress\\">23 / 28 (82%)</div></div></div>"`;
+exports[`score.vue should render component 1`] = `
+<div class="ui indicating progress">
+  <div class="bar" style="width: 82%;">
+    <div class="progress">23 / 28 (82%)</div>
+  </div>
+</div>
+`;

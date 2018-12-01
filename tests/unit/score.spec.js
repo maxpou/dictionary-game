@@ -1,9 +1,9 @@
-import { shallow } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import score from '@/components/Game/score.vue'
 
 describe('score.vue', () => {
   it('shouldn\'t render when empty score', () => {
-    const wrapper = shallow(score, {
+    const wrapper = mount(score, {
       propsData: {
         score: {
           success: 0,
@@ -16,7 +16,7 @@ describe('score.vue', () => {
   })
 
   it('should render component', () => {
-    const wrapper = shallow(score, {
+    const wrapper = mount(score, {
       propsData: {
         score: {
           success: 23,
