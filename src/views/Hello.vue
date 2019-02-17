@@ -34,7 +34,7 @@
       <div class="ui middle aligned stackable grid container">
         <div class="row">
           <div class="eight wide column">
-            <h3 class="ui header">Create your own dictionnary and get challenged</h3>
+            <h3 class="ui header">Create your own dictionary and get challenged</h3>
             <p>Dictionary Game is a learning platform created to make learning new words easier.</p>
             <h3 class="ui header">See a bug? Want to leave a feedback?</h3>
             <p>You can contact me <a href="mailto:hello@maxpou.fr">here</a>, feedbacks are more than welcome.
@@ -56,7 +56,7 @@
           </div>
           <div class="extra center aligned">
             <h3>Create your own dictionary</h3>
-            <p>This is your own dictionnary. Feel free to add, edit or disable words.</p>
+            <p>This is your own dictionary. Feel free to add, edit or disable words.</p>
           </div>
         </div>
         <div class="card">
