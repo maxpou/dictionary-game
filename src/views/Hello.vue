@@ -161,4 +161,9 @@ export default {
 a.link {
   text-decoration: underline;
 }
+
+.ui.secondary.pointing.menu {
+  border-bottom: 0px;
+}
+
 </style>
