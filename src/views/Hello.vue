@@ -166,4 +166,7 @@ a.link {
   border-bottom: 0px;
 }
 
+.ui.positive.button {
+  background-color: #6293ea;
+}
 </style>
