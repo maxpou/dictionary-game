@@ -1,40 +1,82 @@
 <template>
-  <div>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
+  <div class="modal" @keydown.esc="exit">
+    <span class="close" @click="exit">×</span>
+    <div class="modal_container">
+      <div id="firebaseui-auth-container"></div>
+      <div id="loader">Loading...</div>
+    </div>
   </div>
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebaseApp from '../api/firebaseApp'
+import firebase from 'firebase/app'
 import firebaseui from 'firebaseui'
 
 export default {
   mounted () {
-    let ui = firebaseui.auth.AuthUI.getInstance()
-    if (!ui) {
-      ui = new firebaseui.auth.AuthUI(firebase.auth())
-    }
-
-    const uiConfig = {
-      callbacks: {
-        signInSuccess (currentUser, credential, redirectUrl) {
-          return true
+    this.setupFirebaseUI()
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        this.exit()
+      }
+    })
+  },
+  methods: {
+    setupFirebaseUI () {
+      let ui = firebaseui.auth.AuthUI.getInstance()
+      if (!ui) {
+        ui = new firebaseui.auth.AuthUI(firebaseApp.auth())
+      }
+      const that = this
+      ui.start('#firebaseui-auth-container', {
+        callbacks: {
+          signInSuccessWithAuthResult (authResult, redirectUrl) {
+            that.$store.dispatch('loadLoggedInUser')
+            that.$router.push({ name: 'home' })
+          },
+          uiShown () {
+            document.getElementById('loader').style.display = 'none'
+          }
         },
-        uiShown () {
-          document.getElementById('loader').style.display = 'none'
-        }
-      },
-      signInFlow: 'popup',
-      signInSuccessUrl: `${window.location.origin + window.location.pathname}`,
-      signInOptions: [
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        firebase.auth.EmailAuthProvider.PROVIDER_ID
-      ],
-      tosUrl: '<your-tos-url>'
+        signInFlow: 'popup',
+        signInOptions: [
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ]
+      })
+    },
+    exit () {
+      this.$router.push({ name: 'home' })
     }
-    ui.start('#firebaseui-auth-container', uiConfig)
   }
 }
 </script>
+
+<style scoped>
+.close {
+  font-size: 3em;
+  top: .5em;
+  line-height: .5;
+  right: 1em;
+  cursor: pointer;
+  position: absolute;
+  color: #fff;
+}
+.modal {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  background: rgba(0,0,0,.8);
+}
+
+.modal_container {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 100%;
+}
+</style>
