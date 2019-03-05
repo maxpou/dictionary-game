@@ -12,6 +12,7 @@
 import firebaseApp from '../api/firebaseApp'
 import firebase from 'firebase/app'
 import firebaseui from 'firebaseui'
+import 'firebaseui/dist/firebaseui.css'
 
 export default {
   mounted () {
