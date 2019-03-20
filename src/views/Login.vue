@@ -17,13 +17,17 @@ import 'firebaseui/dist/firebaseui.css'
 export default {
   mounted () {
     this.setupFirebaseUI()
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        this.exit()
-      }
-    })
+    document.addEventListener('keydown', this.exitIfEscapeIsPressed)
+  },
+  beforeDestroy () {
+    document.removeEventListener('keydown', this.exitIfEscapeIsPressed)
   },
   methods: {
+    exitIfEscapeIsPressed (event) {
+      if (event.key === 'Escape') {
+        this.exit()
+      }
+    },
     setupFirebaseUI () {
       let ui = firebaseui.auth.AuthUI.getInstance()
       if (!ui) {
@@ -34,7 +38,7 @@ export default {
         callbacks: {
           signInSuccessWithAuthResult (authResult, redirectUrl) {
             that.$store.dispatch('loadLoggedInUser')
-            that.$router.push({ name: 'home' })
+            that.$router.push({ name: 'dashboard' })
           },
           uiShown () {
             document.getElementById('loader').style.display = 'none'
@@ -48,7 +52,7 @@ export default {
       })
     },
     exit () {
-      this.$router.push({ name: 'home' })
+      this.$router.push({ name: 'homepage' })
     }
   }
 }
@@ -77,7 +81,7 @@ export default {
 .modal_container {
   position: absolute;
   text-align: center;
-  top: 50%;
+  top: 40%;
   width: 100%;
 }
 </style>

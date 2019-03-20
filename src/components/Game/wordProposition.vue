@@ -2,7 +2,8 @@
   <div class="column">
     <div class="ui segment"
       v-bind:class="[ isCorrect ? 'correct' : 'incorrect', { clicked: isClicked } ]"
-      v-on:click='submitAnswer'>
+      v-on:click='submitAnswer'
+      role="button">
       {{ printedProposition }}
       <span v-if="isClicked && !isCorrect"> ({{ printedSolution }})</span>
     </div>
@@ -53,6 +54,13 @@ export default {
 <style scoped>
 .ui.segment {
   font-size: 1.8em;
+  cursor: pointer;
+}
+
+.ui.segment:hover {
+  background-color: #f3f3f3;
+  box-shadow: 0px 0px 10px 0px #4E5BD3;
+  color: #484848;
 }
 
 .ui.segment.clicked.incorrect {
