@@ -2,14 +2,7 @@
     <div class="hello">
 
     <div class="ui inverted vertical masthead center aligned segment">
-      <div class="ui container">
-        <div class="ui large secondary pointing menu">
-          <div class="right item">
-            <router-link v-if="!isLoggedIn" to="/login" class="ui inverted button">Login</router-link>
-            <a v-else class="ui inverted button" @click="logout()">Logout</a>
-          </div>
-        </div>
-      </div>
+      <LogoutBar :logout="logout" :isLoggedIn="isLoggedIn" />
 
       <div class="ui text container">
         <h1 class="ui inverted header">
@@ -49,7 +42,7 @@
 
     <div class="ui grid container center aligned segment vertical">
       <h2>Features</h2>
-      <div class="ui four cards">
+      <div class="ui four doubling cards">
         <div class="card">
           <div class="image">
             <img src="../assets/icons/brain.png">
@@ -94,7 +87,12 @@
 </template>
 
 <script>
+import LogoutBar from './LogoutBar.vue'
+
 export default {
+  components: {
+    LogoutBar
+  },
   props: {
     logout: Function,
     isLoggedIn: Boolean
@@ -151,10 +149,6 @@ export default {
 
 a.link {
   text-decoration: underline;
-}
-
-.ui.secondary.pointing.menu {
-  border-bottom: 0px;
 }
 
 .ui.positive.button {

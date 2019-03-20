@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { getCurentUser, logout } from '../api/user'
+import router from '../router'
 
 Vue.use(Vuex)
 
@@ -28,6 +29,7 @@ const actions = {
   logout ({ commit }) {
     logout()
     commit('NO_USER')
+    router.push({ name: 'homepage' })
   }
 }
 
