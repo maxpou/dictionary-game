@@ -23,7 +23,8 @@
       "type": "image/png"
     }
   ],
-  "start_url": "index.html?launcher=homescreen",
+  "start_url": "/dictionary-game/",
+  "scope": "/dictionary-game/",
   "display": "fullscreen",
   "orientation": "portrait-primary",
   "background_color": "#FFFFFF",
