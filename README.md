@@ -81,3 +81,7 @@ More information in the [official documentation](https://github.com/vuejs/vue-cl
 ## Deployment
 
 This app is hosted by [Github Pages](https://pages.github.com/) and the Deployment is fulfilled by [Travis CI](https://travis-ci.org/maxpou/dictionary-game) (lint+tests must be green).
+
+## Icons
+
+Icons made by [Flat Icons](https://www.flaticon.com/authors/flat-icons).
