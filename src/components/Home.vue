@@ -82,7 +82,7 @@
       </div>
     </div>
 
-    <p>Created by Maxence Poutord.</p>
+    <p>Created by <a href="https://twitter.com/_maxpou">Maxence Poutord</a>.</p>
   </div>
 </template>
 
