@@ -106,6 +106,10 @@ export default {
   padding: 1em 0em;
 }
 
+.ui.vertical.segment {
+  border-bottom: 0;
+}
+
 .masthead {
   background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),
     url(../assets/hero/background-mobile.jpg) no-repeat center center fixed !important;
