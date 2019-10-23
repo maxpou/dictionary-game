@@ -10,8 +10,8 @@
 
 <script>
 import firebaseApp from '../api/firebaseApp'
-import firebase from 'firebase/app'
-import firebaseui from 'firebaseui'
+import * as firebase from 'firebase/app'
+import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 
 export default {
