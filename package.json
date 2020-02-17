@@ -35,7 +35,7 @@
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint-plugin-vue": "^6.2.1",
     "vue-template-compiler": "^2.6.10"
   },
   "browserslist": [
